@@ -1,0 +1,19 @@
+{
+  "name": "cypress_tumblr",
+  "version": "1.0.0",
+  "description": "Practise Automated testing with Cypress ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ghieath",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^8.7.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "mocha": "^9.1.3",
+    "mochawesome": "^7.0.0",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.0"
+  }
+}
