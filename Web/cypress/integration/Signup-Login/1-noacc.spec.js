@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import * as Selectors from '../fixtures/selectors.json'
+import * as Selectors from '../../fixtures/selectors.json'
 
 describe('No-account Tests', () => {
   it('test redirect from home to login', () => {

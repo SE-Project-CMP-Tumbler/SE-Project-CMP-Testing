@@ -1,5 +1,11 @@
 {
     "DASHBOARD_PAGE": "https://tumblr.com/dashboard/",
     "LOGIN_PAGE": "https://www.tumblr.com/login",
-    "SIGNUP_PAGE": "https://www.tumblr.com/register"
+    "SIGNUP_PAGE": {
+        "URL": "https://www.tumblr.com/register",
+        "EMAIL": "input[name='email']",
+        "PASSWORD": "input[name='password']",
+        "NAME": "input[name='blogName']",
+        "AGE": "input[name='age']"
+    }
 }
