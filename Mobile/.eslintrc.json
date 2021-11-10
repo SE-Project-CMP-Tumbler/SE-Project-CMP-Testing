@@ -15,6 +15,5 @@
         "no-unused-vars":"warn",
         "quotes":"warn",
         "no-trailing-spaces":"warn"
-
     }
 }
