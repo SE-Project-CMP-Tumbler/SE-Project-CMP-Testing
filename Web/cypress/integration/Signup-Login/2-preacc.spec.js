@@ -43,7 +43,7 @@ describe('pre-SignUp Tests', () => {
       cy.contains('Sign up').click()
 
       // assert we didn't move to next page, "How old are you?"
-      cy.contains('old').should('not.exist')
+      cy.get(Selectors.SIGNUP_PAGE.AGE).should('not.exist')
     }
 
     it('', () => {
