@@ -4,8 +4,8 @@
     "description": "",
     "main": "src/index.js",
     "scripts": {
-        "test": "npx wdio",
-        "start": "npx wdio"
+        "emu-appium": "start /b emulator @Pixel -no-boot-anim -gpu on && Appium",
+        "test": "wdio"
     },
     "keywords": [],
     "author": "Karim",

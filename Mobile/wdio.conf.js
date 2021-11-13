@@ -16,8 +16,8 @@ exports.config = {
       deviceName: 'Pixel',
       appPackage: 'com.tumblr',
       appActivity: 'com.tumblr.ui.activity.JumpoffActivity',
-      automationName: 'UiAutomator2',
-    },
+      automationName: 'UiAutomator2'
+    }
   ],
 
   logLevel: 'trace',
@@ -29,6 +29,6 @@ exports.config = {
   reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000,
-  },
-};
+    timeout: 60000
+  }
+}
