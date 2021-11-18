@@ -3,9 +3,22 @@
 import * as Selectors from '../../fixtures/selectors.json'
 
 describe('No-account Tests', () => {
-  it('test redirect from home to login', () => {
-    cy.visit(Selectors.DASHBOARD_PAGE)
-    cy.url().should('have.string', '/login')
+  context('Elements of root page', () => {
+    beforeEach(() => {
+      cy.visit(Selectors.ROOT_PAGE)
+    })
+
+    it('assert login with google exists', () => {
+      cy.contains('with Google').should('exist')
+    })
+
+    it('assert signup button exists', () => {
+      cy.contains('Sign up').should('exist')
+    })
+
+    it('assert login button exists', () => {
+      cy.contains('Log in').should('exist')
+    })
   })
 
   context('Elements of login page', () => {
@@ -26,5 +39,19 @@ describe('No-account Tests', () => {
     })
 
     // test forgot pass non-existent email -> can't cuz needs captcha
+  })
+
+  context('Elements of SIGNUP page', () => {
+    beforeEach(() => {
+      cy.visit(Selectors.SIGNUP_PAGE.URL)
+    })
+
+    it('assert login with google exists', () => {
+      cy.contains('with Google').should('exist')
+    })
+
+    it('assert login button exists', () => {
+      cy.contains('Log in').should('exist')
+    })
   })
 })

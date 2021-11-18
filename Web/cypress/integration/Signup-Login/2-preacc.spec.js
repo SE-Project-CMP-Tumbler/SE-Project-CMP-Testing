@@ -3,20 +3,6 @@
 import * as Selectors from '../../fixtures/selectors.json'
 
 describe('pre-SignUp Tests', () => {
-  context('Elements of SIGNUP page', () => {
-    beforeEach(() => {
-      cy.visit(Selectors.SIGNUP_PAGE.URL)
-    })
-
-    it('assert login with google exists', () => {
-      cy.contains('with Google').should('exist')
-    })
-
-    it('assert login button exists', () => {
-      cy.contains('Log in').should('exist')
-    })
-  })
-
   context('Sign up - Invalid credentials', () => {
     function singUpInvalid (ei, pi, bi) {
       // ['empty', 'invalid', 'valid']

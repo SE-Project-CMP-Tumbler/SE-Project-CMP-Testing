@@ -1,11 +1,18 @@
 {
+    "ROOT_PAGE": "  https://www.tumblr.com/",
     "DASHBOARD_PAGE": "https://tumblr.com/dashboard/",
-    "LOGIN_PAGE": "https://www.tumblr.com/login",
+    "LOGIN_PAGE": {
+        "URL": "https://www.tumblr.com/login",
+        "EMAIL": "input[name='email']",
+        "PASSWORD": "input[name='password']",
+    },
     "SIGNUP_PAGE": {
         "URL": "https://www.tumblr.com/register",
         "EMAIL": "input[name='email']",
         "PASSWORD": "input[name='password']",
         "NAME": "input[name='blogName']",
         "AGE": "input[name='age']"
-    }
+    },
+    "WELCOME_PAGE": "https://www.tumblr.com/getting_to_know_tumblr",
+    "SETTINGS_ACCOUNT": "https://www.tumblr.com/settings/account"
 }
