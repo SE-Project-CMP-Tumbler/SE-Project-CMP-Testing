@@ -4,7 +4,7 @@
     "LOGIN_PAGE": {
         "URL": "https://www.tumblr.com/login",
         "EMAIL": "input[name='email']",
-        "PASSWORD": "input[name='password']",
+        "PASSWORD": "input[name='password']"
     },
     "SIGNUP_PAGE": {
         "URL": "https://www.tumblr.com/register",
