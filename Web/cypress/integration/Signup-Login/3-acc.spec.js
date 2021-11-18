@@ -138,17 +138,17 @@ describe('Actual SignUp Tests', () => {
 
   it('Should redirect to SignUp', () => {
   })
-/*
-  it('Log In Deleted Account', () => {
-    cy.visit(Selectors.LOGIN_PAGE.URL)
-    cy.get(Selectors.LOGIN_PAGE.EMAIL).type(testEmail)
-    cy.get(Selectors.LOGIN_PAGE.PASSWORD).type(testPassword)
-    cy.contains('Log in').click()
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(4000)
-    cy.url().should('eq', Selectors.LOGIN_PAGE)
-  })
-*/
+  /*
+    it('Log In Deleted Account', () => {
+      cy.visit(Selectors.LOGIN_PAGE.URL)
+      cy.get(Selectors.LOGIN_PAGE.EMAIL).type(testEmail)
+      cy.get(Selectors.LOGIN_PAGE.PASSWORD).type(testPassword)
+      cy.contains('Log in').click()
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(4000)
+      cy.url().should('eq', Selectors.LOGIN_PAGE)
+    })
+  */
 
   // Can't cuz it has captcha
   it('forgot pass deleted', () => {
