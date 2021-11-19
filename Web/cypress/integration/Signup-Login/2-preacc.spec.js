@@ -53,12 +53,12 @@ describe('pre-SignUp Tests', () => {
 
       cy.contains('Sign up').click()
 
-      cy.get(Selectors.SIGNUP_PAGE.AGE).type(3)
+      cy.get(Selectors.SIGNUP_PAGE.AGE).type(11)
       cy.contains('Next').click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(4000)
       // no wait means next assertion will be verified immediately, even before page loads (IF)
-      cy.url().should('eq', Selectors.SIGNUP_PAGE.URL)
+      cy.url().should('have.string', Selectors.SIGNUP_PAGE.URL)
     })
   })
 })

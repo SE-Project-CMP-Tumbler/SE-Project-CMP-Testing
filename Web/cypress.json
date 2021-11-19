@@ -1,4 +1,5 @@
 {
+  "baseUrl": "http://www.tumblr.com",
   "watchForFileChanges": false,
   "projectId": "9p2h28"
 }

@@ -5,7 +5,7 @@ import * as Selectors from '../../fixtures/selectors.json'
 describe('No-account Tests', () => {
   context('Elements of root page', () => {
     beforeEach(() => {
-      cy.visit(Selectors.ROOT_PAGE)
+      cy.visit('/')
     })
 
     it('assert login with google exists', () => {
@@ -23,7 +23,7 @@ describe('No-account Tests', () => {
 
   context('Elements of login page', () => {
     beforeEach(() => {
-      cy.visit(Selectors.LOGIN_PAGE)
+      cy.visit(Selectors.LOGIN_PAGE.URL)
     })
 
     it('assert login with google exists', () => {
