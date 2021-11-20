@@ -1,5 +1,18 @@
 {
   "baseUrl": "http://www.tumblr.com",
+  "pageLoadTimeout": 120000,
   "watchForFileChanges": false,
-  "projectId": "9p2h28"
+  "projectId": "9p2h28",
+  "reporter": "cypress-multi-reporters",
+  "reporterOptions": {
+      "reporterEnabled": "mochawesome",
+      "mochawesomeReporterOptions": {
+          "reportDir": "cypress/reports/mocha",
+          "quite": true,
+          "overwrite": false,
+          "video": true,
+          "html": true,
+          "json": true
+      }
+  }
 }

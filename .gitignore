@@ -1,3 +1,6 @@
 node_modules/
 package-lock.json
 *.apk
+Web/cypress/videos/
+Web/cypress/reports/
+Web/cypress/screenshots/

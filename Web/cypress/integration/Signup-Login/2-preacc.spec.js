@@ -3,13 +3,12 @@
 import * as Selectors from '../../fixtures/selectors.json'
 
 describe('pre-SignUp Tests', () => {
+  // ['empty', 'invalid', 'valid']
+  const emails = ['', 'invalid.com@', 'reaal_email@hi2.com']
+  const passwords = ['', 'weak', 'Gooood_Pasword@best %3&6']
+  const blogNames = ['', '%&person', 'valpes-489167']
   context('Sign up - Invalid credentials', () => {
     function singUpInvalid (ei, pi, bi) {
-      // ['empty', 'invalid', 'valid']
-      const emails = ['', 'invalid.com@', 'real_email@hi2.com']
-      const passwords = ['', 'weak', 'Good_Password@best %3&6']
-      const blognames = ['', '%&person', 'valid-person-03489167']
-
       if (ei) {
         cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear().type(emails[ei])
       } else {
@@ -21,7 +20,7 @@ describe('pre-SignUp Tests', () => {
         cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear()
       }
       if (bi) {
-        cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type(blognames[bi])
+        cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type(blogNames[bi])
       } else {
         cy.get(Selectors.SIGNUP_PAGE.NAME).clear()
       }
@@ -47,12 +46,13 @@ describe('pre-SignUp Tests', () => {
         }
       }
       // testing valid combination but invalid age:
-      cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear().type('real_email@hi2.com')
-      cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear().type('Good_Password@best %3&6')
-      cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type('valid-person-03489167')
+      cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear().type(emails[2])
+      cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear().type(passwords[2])
+      cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type(blogNames[2])
 
       cy.contains('Sign up').click()
-
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(4000)
       cy.get(Selectors.SIGNUP_PAGE.AGE).type(11)
       cy.contains('Next').click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting

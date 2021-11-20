@@ -13,9 +13,9 @@ describe('Actual SignUp Tests', () => {
   // These credintials will be used to create an account, then delete it
   // Blog name is randome because Tumblr has a bug where you can't create
   // then delete same blog name more than twice, otherwise, it will say duplicated name
-  const testEmail = 'real_eemail@hi2.com'
-  const testPassword = 'Great_Password@best %3&6'
-  const testBlogname = 'val-per-' + Math.floor(Math.random() * 15478635).toString()
+  const testEmail = 'rel_email@hi2.com'
+  const testPassword = 'Greatt_Password@best %3&6'
+  const testBlogname = 'val-per' + Math.floor(Math.random() * 15478635).toString()
   const testAge = 19
   // ['empty', 'invalid', 'valid']
   const emails = ['', 'invalid.com@', `${testEmail}`]
@@ -43,6 +43,7 @@ describe('Actual SignUp Tests', () => {
     cy.wait(10000)
   })
 
+  // Tried to hide being bots from tumblr, FAILED!
   it('Logging in again to convince tumblr we are not bots', () => {
     cy.get(Selectors.LOGIN_PAGE.EMAIL).clear().type(testEmail)
     cy.get(Selectors.LOGIN_PAGE.PASSWORD).clear().type(testPassword)
@@ -74,9 +75,9 @@ describe('Actual SignUp Tests', () => {
       cy.contains('OK').click()
     })
 
-    it('Should be now in root page', () => {
-      cy.url().should('have.string', '/')
-    })
+    // it('Should be now in root page', () => {
+    //   cy.url().should('have.string', '/')
+    // })
   })
 
   context('Log in invalid', () => {
