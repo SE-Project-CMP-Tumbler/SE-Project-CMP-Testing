@@ -4,7 +4,12 @@
   "description": "Practise Automated testing with Cypress ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports  && mkdir cypress\\reports\\mochareports",
+    "pretest": "npm run clean:reports",
+    "posttest": "npm run pretest && npm run combine-reports && npm run generate-report",
+    "test": "cypress open",
     "cypress:runAllDashboard": "cypress run --record --key 62d07040-edc6-4a14-b6f8-9f9ad76e10b6"
   },
   "author": "Ghieath",
