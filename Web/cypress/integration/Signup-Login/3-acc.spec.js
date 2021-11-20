@@ -83,15 +83,28 @@ describe('Actual SignUp Tests', () => {
     // })
   })
 
-  it('Test signup already existant', () => {
-    cy.visit(Selectors.SIGNUP_PAGE.URL)
-    cy.get(Selectors.SIGNUP_PAGE.EMAIL).type(testEmail)
-    cy.get(Selectors.SIGNUP_PAGE.PASSWORD).type(testPassword)
-    cy.get(Selectors.SIGNUP_PAGE.NAME).type(testBlogname)
-    cy.contains('Sign up').click()
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(10000) // Signing up takes a long time
-    cy.get(Selectors.SIGNUP_PAGE.AGE).should('not.exist')
+  context('Test signup already existant', () => {
+    it('existant email', () => {
+      cy.visit(Selectors.SIGNUP_PAGE.URL)
+      cy.get(Selectors.SIGNUP_PAGE.EMAIL).type(testEmail)
+      cy.get(Selectors.SIGNUP_PAGE.PASSWORD).type(testPassword)
+      cy.get(Selectors.SIGNUP_PAGE.NAME).type(testBlogname + '1')
+      cy.contains('Sign up').click()
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(10000) // Signing up takes a long time
+      cy.get(Selectors.SIGNUP_PAGE.AGE).should('not.exist')
+    })
+
+    it('existant blog name', () => {
+      cy.visit(Selectors.SIGNUP_PAGE.URL)
+      cy.get(Selectors.SIGNUP_PAGE.EMAIL).type('rr' + testEmail)
+      cy.get(Selectors.SIGNUP_PAGE.PASSWORD).type(testPassword)
+      cy.get(Selectors.SIGNUP_PAGE.NAME).type(testBlogname)
+      cy.contains('Sign up').click()
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(10000) // Signing up takes a long time
+      cy.get(Selectors.SIGNUP_PAGE.AGE).should('not.exist')
+    })
   })
 
   context('Log in invalid', () => {
