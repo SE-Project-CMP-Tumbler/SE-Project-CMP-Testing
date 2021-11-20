@@ -5,10 +5,10 @@
     "main": "src/index.js",
     "scripts": {
         "emu-appium": "start /b emulator @Pixel -no-boot-anim -gpu on && Appium",
-        "test": "wdio",
-        "wdio": "wdio run wdio.conf.js"
+        "test": "wdio run wdio.conf.cjs "
     },
     "keywords": [],
+    "type": "module",
     "author": "Karim",
     "license": "ISC",
     "devDependencies": {
@@ -21,5 +21,8 @@
         "eslint-plugin-import": "^2.25.2",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^5.1.1"
+    },
+    "dependencies": {
+        "mailslurp-client": "^15.0.2"
     }
 }
