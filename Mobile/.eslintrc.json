@@ -12,8 +12,18 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars":"warn",
-        "quotes":"warn",
-        "no-trailing-spaces":"warn"
+        "indent": ["error", 4]
+    },
+    "globals": {
+        "driver":"readonly",
+        "browser":"readonly",
+        "$":"readonly",
+        "$$":"readonly",
+        "it":"readonly",
+        "describe":"readonly",
+        "expect":"readonly",
+        "context":"readonly",
+        "beforeEach":"readonly",
+        "afterEach":"readonly"
     }
 }

@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
 *.apk
+API_Key
