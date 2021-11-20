@@ -1,6 +1,9 @@
 {
   "baseUrl": "http://www.tumblr.com",
-  "pageLoadTimeout": 120000,
+  "pageLoadTimeout": 180000,
+  "defaultCommandTimeout": 30000,
+  "responseTimeout": 30000,
+  "requestTimeout": 30000,
   "watchForFileChanges": false,
   "projectId": "9p2h28",
   "reporter": "cypress-multi-reporters",

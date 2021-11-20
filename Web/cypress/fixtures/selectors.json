@@ -1,12 +1,13 @@
 {
     "DASHBOARD_PAGE": {
-        "URL": "/dashboard/"
+        "URL": "/dashboard"
     },
     "LOGIN_PAGE": {
         "URL": "/login",
         "EMAIL": "input[name='email']",
         "PASSWORD": "input[name='password']"
     },
+    "LOGOUT": "/logout",
     "SIGNUP_PAGE": {
         "URL": "/register",
         "EMAIL": "input[name='email']",
