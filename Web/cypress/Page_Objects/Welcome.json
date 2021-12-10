@@ -1,0 +1,4 @@
+{
+  "URL": "/getting_to_know_tumblr",
+  "SKIP": "button[class='onboarding-skip-button']"
+}

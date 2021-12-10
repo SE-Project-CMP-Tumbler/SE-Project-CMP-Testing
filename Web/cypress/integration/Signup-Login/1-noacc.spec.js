@@ -1,57 +1,60 @@
 /// <reference types="cypress" />
 
-import * as Selectors from '../../fixtures/selectors.json'
+import * as SEL from '../../Page_Objects/'
 
 describe('No-account Tests', () => {
   context('Elements of root page', () => {
+    const ROOT = SEL.ROOT
     beforeEach(() => {
       cy.visit('/')
     })
 
     it('assert login with google exists', () => {
-      cy.contains('with Google').should('exist')
+      cy.get(ROOT.WITHGOOGLE).should('exist')
     })
 
     it('assert signup button exists', () => {
-      cy.contains('Sign up').should('exist')
+      cy.get(ROOT.SIGNUP).should('exist')
     })
 
     it('assert login button exists', () => {
-      cy.contains('Log in').should('exist')
+      cy.get(ROOT.LOGIN).should('exist')
     })
   })
 
   context('Elements of login page', () => {
+    const LOGIN = SEL.LOGIN
     beforeEach(() => {
-      cy.visit(Selectors.LOGIN_PAGE.URL)
+      cy.visit(LOGIN.URL)
     })
 
     it('assert login with google exists', () => {
-      cy.contains('with Google').should('exist')
+      cy.get(LOGIN.WITHGOOGLE).should('exist')
     })
 
     it('assert forgot password exists', () => {
-      cy.contains('Forgot').should('exist')
+      cy.get(LOGIN.FORGOTPASSWORD).should('exist')
     })
 
     it('assert signup button exists', () => {
-      cy.contains('Sign up').should('exist')
+      cy.get(LOGIN.SIGNUP).should('exist')
     })
 
     // test forgot pass non-existent email -> can't cuz needs captcha
   })
 
   context('Elements of SIGNUP page', () => {
+    const SIGNUP = SEL.SIGNUP
     beforeEach(() => {
-      cy.visit(Selectors.SIGNUP_PAGE.URL)
+      cy.visit(SIGNUP.URL)
     })
 
     it('assert login with google exists', () => {
-      cy.contains('with Google').should('exist')
+      cy.get(SIGNUP.WITHGOOGLE).should('exist')
     })
 
     it('assert login button exists', () => {
-      cy.contains('Log in').should('exist')
+      cy.get(SIGNUP.LOGIN).should('exist')
     })
   })
 })

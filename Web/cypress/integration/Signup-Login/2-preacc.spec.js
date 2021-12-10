@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 
-import * as Selectors from '../../fixtures/selectors.json'
+import * as SEL from '../../Page_Objects/'
 
 describe('pre-SignUp Tests', () => {
+  const SIGNUP = SEL.SIGNUP
   // ['empty', 'invalid', 'valid']
   const emails = ['', 'invalid.com@', 'reaal_email@hi2.com']
   const passwords = ['', 'weak', 'Gooood_Pasword@best %3&6']
@@ -10,29 +11,31 @@ describe('pre-SignUp Tests', () => {
   context('Sign up - Invalid credentials', () => {
     function singUpInvalid (ei, pi, bi) {
       if (ei) {
-        cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear().type(emails[ei])
+        cy.get(SIGNUP.EMAIL).clear().type(emails[ei])
       } else {
-        cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear()
+        cy.get(SIGNUP.EMAIL).clear()
       }
       if (pi) {
-        cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear().type(passwords[pi])
+        cy.get(SIGNUP.PASSWORD).clear().type(passwords[pi])
       } else {
-        cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear()
+        cy.get(SIGNUP.PASSWORD).clear()
       }
       if (bi) {
-        cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type(blogNames[bi])
+        cy.get(SIGNUP.BLOGNAME).clear().type(blogNames[bi])
       } else {
-        cy.get(Selectors.SIGNUP_PAGE.NAME).clear()
+        cy.get(SIGNUP.BLOGNAME).clear()
       }
 
-      cy.contains('Sign up').click()
+      cy.get(SIGNUP.SUBMIT).click()
 
       // assert we didn't move to next page, "How old are you?"
-      cy.get(Selectors.SIGNUP_PAGE.AGE).should('not.exist')
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(2000)
+      cy.get(SIGNUP.AGE).should('not.exist')
     }
 
     it('', () => {
-      cy.visit(Selectors.SIGNUP_PAGE.URL)
+      cy.visit(SIGNUP.URL)
       // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
       // testing all combinations except {valid, valid, valid}
       const cnt = 3
@@ -46,19 +49,19 @@ describe('pre-SignUp Tests', () => {
         }
       }
       // testing valid combination but invalid age:
-      cy.get(Selectors.SIGNUP_PAGE.EMAIL).clear().type(emails[2])
-      cy.get(Selectors.SIGNUP_PAGE.PASSWORD).clear().type(passwords[2])
-      cy.get(Selectors.SIGNUP_PAGE.NAME).clear().type(blogNames[2])
+      cy.get(SIGNUP.EMAIL).clear().type(emails[2])
+      cy.get(SIGNUP.PASSWORD).clear().type(passwords[2])
+      cy.get(SIGNUP.BLOGNAME).clear().type(blogNames[2])
 
-      cy.contains('Sign up').click()
+      cy.get(SIGNUP.SUBMIT).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(4000)
-      cy.get(Selectors.SIGNUP_PAGE.AGE).type(11)
-      cy.contains('Next').click()
+      cy.get(SIGNUP.AGE).type(11)
+      cy.get(SIGNUP.AGE_SUBMIT).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(4000)
       // no wait means next assertion will be verified immediately, even before page loads (IF)
-      cy.url().should('have.string', Selectors.SIGNUP_PAGE.URL)
+      cy.url().should('have.string', SIGNUP.URL)
     })
   })
 })
