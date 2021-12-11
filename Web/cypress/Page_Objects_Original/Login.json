@@ -1,0 +1,9 @@
+{
+      "URL": "/login",
+      "EMAIL": "input[name='email']",
+      "PASSWORD": "input[name='password']",
+      "SUBMIT": "button[type=submit]",
+      "FORGOTPASSWORD": "a[href*='/forgot_password']",
+      "WITHGOOGLE": "[data-testid='google-login-button']",
+      "SIGNUP": "a[href*='/register']"
+}

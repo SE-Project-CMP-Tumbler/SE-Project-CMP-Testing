@@ -1,9 +1,9 @@
-{
+{     
       "URL": "/login",
-      "EMAIL": "input[name='email']",
-      "PASSWORD": "input[name='password']",
-      "SUBMIT": "button[type=submit]",
+      "EMAIL": "#email",
+      "PASSWORD": "#password",
+      "SUBMIT": "form#loginform > div button[type=submit]",
       "FORGOTPASSWORD": "a[href*='/forgot_password']",
-      "WITHGOOGLE": "[data-testid='google-login-button']",
+      "WITHGOOGLE": ".MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-fullWidth.MuiButtonBase-root.css-189e9pj-MuiButtonBase-root-MuiButton-root",
       "SIGNUP": "a[href*='/register']"
 }

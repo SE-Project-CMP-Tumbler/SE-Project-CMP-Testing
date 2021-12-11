@@ -1,0 +1,11 @@
+{
+    "URL": "/register",
+    "EMAIL": "input[name='email']",
+    "PASSWORD": "input[name='password']",
+    "BLOGNAME": "input[name='blogName']",
+    "SUBMIT": "button[type=submit]",
+    "AGE_SUBMIT": "button[type=submit]",
+    "AGE": "input[name='age']",
+    "LOGIN": "a[href*='/login']",
+    "WITHGOOGLE": "[data-testid='google-login-button']"
+}
