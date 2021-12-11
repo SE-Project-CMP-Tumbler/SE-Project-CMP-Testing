@@ -7,7 +7,7 @@ describe('Basic Dashboard Tests', () => {
     cy.visit(SEL.DASHBOARD.URL)
   })
   it('Should contain multiple posts', () => {
-    // cy.get('div.postBody').should('have.length.at.least', 1)
+    cy.get('div.postBody').should('have.length.at.least', 1)
   })
   it('Posts should contain data', () => {
     cy.get('div.postBody span.text').each(($el) => {
