@@ -4,8 +4,8 @@
     "PASSWORD": "#password",
     "BLOGNAME": "#blog-name",
     "SUBMIT": "form#signupform1 > div button[type=submit]",
-    "AGE_SUBMIT": "button[type=submit]",
-    "AGE": "input[name='age']",
+    "AGE_SUBMIT": "form#signupform2 > div button[type=submit]",
+    "AGE": "#age",
     "LOGIN": "a[href*='/login']",
     "WITHGOOGLE": ".MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeLarge.MuiButton-containedSizeLarge.MuiButton-fullWidth.MuiButtonBase-root.css-189e9pj-MuiButtonBase-root-MuiButton-root"
 }
