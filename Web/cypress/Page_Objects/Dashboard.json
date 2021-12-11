@@ -1,3 +1,4 @@
 {
-  "URL": "/dashboard"
+  "URL": "/dashboard",
+  "NEW-VIEW_POSTS_DIV": ".MuiGrid-root.MuiGrid-container.MuiGrid-item.MuiGrid-spacing-xs-8.MuiGrid-direction-xs-column.MuiGrid-grid-xs-12.MuiGrid-grid-md-8.css-1jnhrwk-MuiGrid-root"
 }
