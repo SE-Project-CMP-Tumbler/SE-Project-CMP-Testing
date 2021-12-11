@@ -5,3 +5,5 @@ API_Key
 Web/cypress/videos/
 Web/cypress/reports/
 Web/cypress/screenshots/
+Mobile/allure-report/*
+Mobile/allure-results/*
