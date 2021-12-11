@@ -1,11 +1,12 @@
+import io.appium.java_client.android.Activity;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 
-@Test(groups = {"Android"})
 public class SignUpTest extends Setup {
 
     private ArrayList<String[]> CombineEmailData(String emailAddress) {
@@ -35,30 +36,40 @@ public class SignUpTest extends Setup {
         return combinations;
     }
 
-    public void SignUp() throws InterruptedException {
-        findElementByText(StartPage.Skip_Btn_Android.getId()).click();
-        findElementByText(StartPage.SIGN_UP_Btn_Android.getId()).click();
-        findElementByText(SignUpPage.SIGN_UP_WITH_EMAIL_Android.getId()).click();
+    @Test(groups = {"Android"})
+    public void SignUpAndroid() throws InterruptedException {
+        driver.startActivity(nativeApp);
+
+        findElementByText(StartPage.Android_Skip_Btn.getId()).click();
+        findElementByText(StartPage.Android_SIGN_UP_Btn.getId()).click();
+        findElementByText(SignUpPage.Android_SIGN_UP_WITH_EMAIL.getId()).click();
         List<String[]> comb =  CombineEmailData("d8c1f7c1-394c-494b-bac1-aed8006efd51@mailslurp.com");
         String [] validRow= comb.get((comb.toArray().length - 1));
         comb.remove(comb.toArray().length-1);
         for (String[] arr : comb) {
-            findElementByRescId(SignUpPage.Email_field_Android.getId()).replaceValue(arr[0]);
-            findElementByRescId(SignUpPage.Pass_field_Android.getId()).replaceValue(arr[1]);
-            findElementByRescId(SignUpPage.Name_field_Android.getId()).replaceValue(arr[2]);
-            findElementByRescId(SignUpPage.Age_field_Android.getId()).replaceValue( arr[3]);
-            findElementByRescId(SignUpPage.Done_Android.getId()).click();
+            findElementByRescId_Android(SignUpPage.Android_Email_field.getId()).replaceValue(arr[0]);
+            findElementByRescId_Android(SignUpPage.Android_Pass_field.getId()).replaceValue(arr[1]);
+            findElementByRescId_Android(SignUpPage.Android_Name_field.getId()).replaceValue(arr[2]);
+            findElementByRescId_Android(SignUpPage.Android_Age_field.getId()).replaceValue( arr[3]);
+            findElementByRescId_Android(SignUpPage.Done_Android.getId()).click();
             Thread.sleep(3000);
-            assert findElementByText(SignUpPage.In_The_SamePage.getId()).isDisplayed():"this must fail";
+            assert DoesExist(SignUpPage.Android_In_The_SamePage.getId()):"DashBoard should not be entered";
         }
-        findElementByRescId(SignUpPage.Email_field_Android.getId()).replaceValue(validRow[0]);
-        findElementByRescId(SignUpPage.Pass_field_Android.getId()).replaceValue(validRow[1]);
-        findElementByRescId(SignUpPage.Name_field_Android.getId()).replaceValue(validRow[2]);
-        findElementByRescId(SignUpPage.Age_field_Android.getId()).replaceValue( validRow[3]);
-        findElementByRescId(SignUpPage.Done_Android.getId()).click();
+        findElementByRescId_Android(SignUpPage.Android_Email_field.getId()).replaceValue(validRow[0]);
+        findElementByRescId_Android(SignUpPage.Android_Pass_field.getId()).replaceValue(validRow[1]);
+        findElementByRescId_Android(SignUpPage.Android_Name_field.getId()).replaceValue(validRow[2]);
+        findElementByRescId_Android(SignUpPage.Android_Age_field.getId()).replaceValue( validRow[3]);
+        findElementByRescId_Android(SignUpPage.Done_Android.getId()).click();
         Thread.sleep(3000);
-        assert  !findElementByText(SignUpPage.In_The_SamePage.getId()).isDisplayed():"this should have signed up";
-        assert  findElementByRescId(DashBoardPage.CreatePostButton.getId()).isDisplayed(): "we should be able to add posts";
+        assert  !DoesExist(SignUpPage.Android_In_The_SamePage.getId()):"DashBoard Should be reached";
+        assert  DoesExist(DashBoardPage.CreatePostButton.getId()): "New posts should be addable";
+    }
+    @Test(groups = {"CrossPlatform"})
+    public void SignUpCross ()
+    {
+        driver.startActivity(cross);
+
+        driver.findElementByAccessibilityId(StartPage.Cross_SIGN_UP_Btn.getId()).click();
     }
 
 }

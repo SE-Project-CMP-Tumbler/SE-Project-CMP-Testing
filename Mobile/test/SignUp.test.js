@@ -17,7 +17,7 @@ async function NavigateToSignUp () {
     await DashBoard.accountIcon.click()
 }
 
-function CombineEmailData (inbox) {
+async function CombineEmailData (inbox) {
     const getPass = inbox.emailAddress.slice(0, 8)
     const getName = inbox.emailAddress.slice(9, 13)
 
@@ -56,12 +56,13 @@ function CombineEmailData (inbox) {
             return ret
         })
     return combinations.slice(1)
-}
+};
+
 describe('SignUp testing', async () => {
     beforeEach('SignUp navigation', async () => {
         await NavigateToSignUp()
     })
-    afterEach('bbb', async () => {
+    afterEach('Reset app', async () => {
         await driver.reset()
     })
     it('SignUp, They will not be signed up ', async () => {
@@ -81,9 +82,6 @@ describe('SignUp testing', async () => {
             if (item.email) await $(`android=text("${item.email}")`).clearValue()
             if (item.password) await $(`android=text("${item.password}")`).clearValue()
             if (item.name) await $(`android=text("${item.name}")`).clearValue()
-
-            // toHaveTextContaining(['This email address is already in use.', 'please', 'at least', 'choose stronger', 'username'],
-            //   { message: `error in test case, data ${item}` })
         }
     })
 })

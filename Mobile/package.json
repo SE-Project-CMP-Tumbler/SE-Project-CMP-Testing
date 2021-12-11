@@ -20,9 +20,7 @@
         "eslint-config-standard": "^16.0.3",
         "eslint-plugin-import": "^2.25.2",
         "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-promise": "^5.1.1"
-    },
-    "dependencies": {
-        "mailslurp-client": "^15.0.2"
+        "eslint-plugin-promise": "^5.1.1",
+        "mailslurp-client": "^14.0.8"
     }
 }
