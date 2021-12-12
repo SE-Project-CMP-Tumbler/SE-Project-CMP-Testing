@@ -1,7 +1,12 @@
+import io.appium.java_client.TouchAction;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.sql.DriverManager.println;
+
 
 public class LogInTest extends Setup {
 
@@ -52,10 +57,30 @@ public class LogInTest extends Setup {
         driver.startActivity(cross);
         driver.findElementByAccessibilityId(StartPage.Cross_LOGIN_Btn.getId()).click();
         driver.findElementByAccessibilityId(LogInCrossPage.Log_In_With_Email.getId()).click();
-        findElementByBounds(LogInCrossPage.Email_Input.getId()).replaceValue("AAAAAAAAAA");
-        findElementByBounds(LogInCrossPage.Password_Input.getId()).replaceValue("AAAAAAAAAA");
-        driver.findElementByAccessibilityId(LogInCrossPage.Log_In_Done.getId()).click();
 
+        List<String[]> comb = CombineEmailData();
+        String[] validRow = comb.get((comb.toArray().length - 1));
+        comb.remove(comb.toArray().length - 1);
+
+        for (String[] arr : comb) {
+            findElementByText(LogInCrossPage.Email_Input.getId()).click();
+            findElementByText(LogInCrossPage.Email_Input.getId()).replaceValue(arr[0]);
+            findElementByText(LogInCrossPage.Password_Input.getId()).click();
+            findElementByText(LogInCrossPage.Password_Input.getId()).replaceValue(arr[1]);
+
+            findElementByContentDesc(LogInCrossPage.Log_In_Done.getId()).click();
+            Thread.sleep(3000);
+            assert DoesExist(LogInCrossPage.Password_Input.getId()) : "DashBoard should not be entered";
+        }
+        findElementByText(LogInCrossPage.Email_Input.getId()).click();
+        findElementByText(LogInCrossPage.Email_Input.getId()).replaceValue(validRow[0]);
+        findElementByText(LogInCrossPage.Password_Input.getId()).click();
+        findElementByText(LogInCrossPage.Password_Input.getId()).replaceValue(validRow[1]);
+        findElementByContentDesc(LogInCrossPage.Log_In_Done.getId()).click();
+        Thread.sleep(3000);
+
+        assert !DoesExist(LogInCrossPage.Password_Input.getId()) : "DashBoard should be reached, but it's not";
+        assert DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
     }
 
 }

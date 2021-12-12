@@ -49,6 +49,12 @@ public class Setup {
                         "new UiSelector().textContains(\"" + text + "\")");
     }
 
+    public AndroidElement findElementByContentDesc(String text) {
+        return (AndroidElement)
+                driver.findElementByAndroidUIAutomator(
+                        "new UiSelector().descriptionContains(\"" + text + "\")");
+    }
+
     public AndroidElement findElementByRescId_Android(String text) {
         String appPackage = "com.example.tumbler";
 

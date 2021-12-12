@@ -1,4 +1,4 @@
-public enum LogInNativePage {
+    public enum LogInNativePage {
     ANDROID_LOG_IN_WITH_EMAIL("LOG IN WITH EMAIL"),
     Android_Email_field("login4_txt_email"),
     Android_Pass_field("login4_txt_password"),

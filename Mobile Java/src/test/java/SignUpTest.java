@@ -50,7 +50,7 @@ public class SignUpTest extends Setup {
             findElementByRescId_Android(SignUpPage.Android_Email_field.getId()).replaceValue(arr[0]);
             findElementByRescId_Android(SignUpPage.Android_Pass_field.getId()).replaceValue(arr[1]);
             findElementByRescId_Android(SignUpPage.Android_Name_field.getId()).replaceValue(arr[2]);
-            findElementByRescId_Android(SignUpPage.Android_Age_field.getId()).replaceValue( arr[3]);
+            findElementByRescId_Android(SignUpPage.Android_Age_field.getId()).replaceValue(arr[3]);
             findElementByRescId_Android(SignUpPage.Done_Android.getId()).click();
             Thread.sleep(3000);
             assert DoesExist(SignUpPage.Android_In_The_SamePage.getId()):"DashBoard should not be entered";
@@ -65,11 +65,55 @@ public class SignUpTest extends Setup {
         assert  DoesExist(DashBoardPage.CreatePostButton.getId()): "New posts should be addable";
     }
     @Test(groups = {"CrossPlatform"})
-    public void SignUpCross ()
-    {
+    public void SignUpCross () throws InterruptedException {
         driver.startActivity(cross);
 
         driver.findElementByAccessibilityId(StartPage.Cross_SIGN_UP_Btn.getId()).click();
+        driver.findElementByAccessibilityId(SignUpPage.Cross_SIGN_UP_WITH_EMAIL.getId()).click();
+        findElementByText(SignUpPage.Cross_Age_field.getId()).click();
+        findElementByText(SignUpPage.Cross_Age_field.getId()).replaceValue("3");
+        findElementByContentDesc(SignUpPage.Cross_Age_Done.getId()).click();
+        assert DoesExist(SignUpPage.Cross_Age_field.getId()): "Age 3 is invalid";
+
+        findElementByText(SignUpPage.Cross_Age_field.getId()).click();
+        findElementByText(SignUpPage.Cross_Age_field.getId()).replaceValue("23");
+        findElementByContentDesc(SignUpPage.Cross_Age_Done.getId()).click();
+        assert !DoesExist(SignUpPage.Cross_Age_field.getId()): "Age 23 is valid";
+
+        // select 5 tags
+        findElementByContentDesc("Art").click();
+        findElementByContentDesc("Gaming").click();
+        findElementByContentDesc("Writing").click();
+        findElementByContentDesc("Positivity").click();
+        findElementByContentDesc("Funny").click();
+        findElementByContentDesc("Comics").click();
+        findElementByContentDesc(SignUpPage.Cross_Tags_Done.getId()).click();
+
+        List<String[]> comb =  CombineEmailData("d8c1f7c1-394c-494b-bac1-aed8006efd51@mailslurp.com");
+        String [] validRow= comb.get((comb.toArray().length - 1));
+        comb.remove(comb.toArray().length-1);
+        for (String[] arr : comb) {
+            findElementByText(SignUpPage.Cross_Email_field.getId()).click();
+            findElementByText(SignUpPage.Cross_Email_field.getId()).replaceValue(arr[0]);
+            findElementByText(SignUpPage.Cross_Pass_field.getId()).click();
+            findElementByText(SignUpPage.Cross_Pass_field.getId()).replaceValue(arr[1]);
+            findElementByText(SignUpPage.Cross_Name_field.getId()).click();
+            findElementByText(SignUpPage.Cross_Name_field.getId()).replaceValue(arr[2]);
+            findElementByContentDesc(SignUpPage.Done_Cross.getId()).click();
+            Thread.sleep(3000);
+            assert DoesExist(SignUpPage.Cross_Pass_field.getId()):"DashBoard should not be entered";
+        }
+        findElementByText(SignUpPage.Cross_Email_field.getId()).click();
+        findElementByText(SignUpPage.Cross_Email_field.getId()).replaceValue(validRow[0]);
+        findElementByText(SignUpPage.Cross_Pass_field.getId()).click();
+        findElementByText(SignUpPage.Cross_Pass_field.getId()).replaceValue(validRow[1]);
+        findElementByText(SignUpPage.Cross_Name_field.getId()).click();
+        findElementByText(SignUpPage.Cross_Name_field.getId()).replaceValue(validRow[2]);
+        findElementByContentDesc(SignUpPage.Done_Cross.getId()).click();
+        Thread.sleep(3000);
+        assert  !DoesExist(SignUpPage.Cross_Pass_field.getId()):"DashBoard Should be reached";
+        assert  DoesExist(DashBoardPage.CreatePostButton.getId()): "New posts should be addable";
+
     }
 
 }
