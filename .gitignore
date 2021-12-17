@@ -1,6 +1,7 @@
 node_modules/
 package-lock.json
 *.apk
+.vscode/*
 API_Key
 Mobile Java/.idea
 Web/cypress/videos/
