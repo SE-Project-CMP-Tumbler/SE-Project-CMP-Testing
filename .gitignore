@@ -3,7 +3,7 @@ package-lock.json
 *.apk
 .vscode/*
 API_Key
-Mobile Java/.idea
+Mobile/.idea
 Web/cypress/videos/
 Web/cypress/reports/
 Web/cypress/screenshots/
