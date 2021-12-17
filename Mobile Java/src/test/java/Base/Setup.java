@@ -1,21 +1,24 @@
+package Base;
+
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Setup {
-    static final public Activity cross = new Activity("com.tumbler", "com.tumbler.MainActivity");
-    static final public Activity nativeApp = new Activity("com.example.tumbler", "com.example.tumbler.SplashScreenActivity");
     static public AndroidDriver driver;
 
-    @BeforeTest
+    @Test
+    @BeforeGroups(groups = {"Native","Cross"})
     public void setup() {
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -36,6 +39,18 @@ public class Setup {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
     }
+    @Test
+    @BeforeGroups(groups = "Native",dependsOnMethods = {"setup"})
+    public void NativeApp() {
+        final Activity activity = new Activity("com.example.tumbler", "com.example.tumbler.SplashScreenActivity");
+        driver.startActivity(activity);
+    }
+    @Test
+    @BeforeGroups(groups = "Cross",dependsOnMethods = {"setup"})
+    public void CrossApp() {
+        final Activity activity = new Activity("com.tumbler", "com.tumbler.MainActivity");
+        driver.startActivity(activity);
+    }
 
     @AfterTest
     public void Close() {
@@ -54,7 +69,6 @@ public class Setup {
                 driver.findElementByAndroidUIAutomator(
                         "new UiSelector().descriptionContains(\"" + text + "\")");
     }
-
     public AndroidElement findElementByRescId_Android(String text) {
         String appPackage = "com.example.tumbler";
 
@@ -68,6 +82,7 @@ public class Setup {
         return (AndroidElement)
                 driver.findElement(By.id(appPackage + ":id/" + text));
     }
+
 
     public AndroidElement findElementByBounds(String text) {
         return (AndroidElement)

@@ -1,3 +1,5 @@
+package Cross;
+
 public enum DashBoardPage {
     CreatePostButton("createPostButton");
     private final String text;

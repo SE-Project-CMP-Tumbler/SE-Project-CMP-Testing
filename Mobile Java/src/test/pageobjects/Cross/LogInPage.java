@@ -1,11 +1,13 @@
-public enum LogInCrossPage {
-    Log_In_With_Email("Log in with email"),
-    Log_In_Done("Log In"),
+package Cross;
+
+public enum LogInPage {
     Email_Input("Email"),
+    Log_In_Done("Log In"),
+    Log_In_With_Email("Log in with email"),
     Password_Input("Password");
     private final String text;
 
-    LogInCrossPage(String txt) {
+    LogInPage(String txt) {
         text = txt;
     }
 
