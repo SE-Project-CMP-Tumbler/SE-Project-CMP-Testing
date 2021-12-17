@@ -2,6 +2,7 @@ node_modules/
 package-lock.json
 *.apk
 API_Key
+Mobile Java/.idea
 Web/cypress/videos/
 Web/cypress/reports/
 Web/cypress/screenshots/
