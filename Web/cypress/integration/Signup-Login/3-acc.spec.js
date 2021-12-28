@@ -121,11 +121,6 @@ describe('Actual SignUp Tests', () => {
       }
 
       cy.get(SEL.LOGIN.SUBMIT).click()
-
-      // assert we didn't move to next page, (give time for page to load just in case)
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(4000)
-      cy.url().should('have.string', SEL.LOGIN.URL)
     }
 
     it('', () => {
@@ -136,7 +131,14 @@ describe('Actual SignUp Tests', () => {
       for (let ei = 0; ei < cnt; ei++) {
         for (let pi = 0; pi < cnt; pi++) {
           if (ei + pi < (cnt - 1) * 2) {
+            const states = ['empty', 'invalid', 'valid']
+            cy.log(`Trying ${states[ei]} email, ${states[pi]} password`)
+            cy.log(`email:${emails[ei]}, password: ${passwords[pi]}`)
             logInInvalid(ei, pi)
+            // assert we didn't move to next page, (give time for page to load just in case)
+            // eslint-disable-next-line cypress/no-unnecessary-waiting
+            cy.wait(4000)
+            cy.url().should('have.string', SEL.LOGIN.URL)
           }
         }
       }
@@ -176,11 +178,6 @@ describe('Actual SignUp Tests', () => {
       }
 
       cy.get(SEL.DELETE_ACCOUNT.SUBMIT).click()
-
-      // assert we didn't move to next page, (give time for page to load just in case)
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(4000)
-      cy.url().should('not.have.string', '/deleted')
     }
 
     it('Invalid delete', () => {
@@ -192,7 +189,15 @@ describe('Actual SignUp Tests', () => {
       for (let ei = 0; ei < cnt; ei++) {
         for (let pi = 0; pi < cnt; pi++) {
           if (ei + pi < (cnt - 1) * 2) {
+            const states = ['empty', 'invalid', 'valid']
+            cy.log(`Trying ${states[ei]} email, ${states[pi]} password`)
+            cy.log(`email:${emails[ei]}, password: ${passwords[pi]}}`)
             delInvalid(ei, pi)
+
+            // assert we didn't move to next page, (give time for page to load just in case)
+            // eslint-disable-next-line cypress/no-unnecessary-waiting
+            cy.wait(4000)
+            cy.url().should('not.have.string', '/deleted')
           }
         }
       }
