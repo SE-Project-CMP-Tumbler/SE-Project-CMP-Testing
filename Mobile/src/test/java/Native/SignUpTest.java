@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class SignUpTest extends Setup {
 
     @Test(groups = {"Native"})
-    public void SignUpAndroid() throws InterruptedException {
+    public void SignUp() throws InterruptedException {
 
         findElementByText(StartPage.Skip_Btn.getId()).click();
         findElementByText(StartPage.SIGN_UP_Btn.getId()).click();

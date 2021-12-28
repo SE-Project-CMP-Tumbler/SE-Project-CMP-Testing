@@ -1,14 +1,17 @@
 package Cross;
 
 import Base.Setup;
-import static Base.Utils.*;
 import org.testng.annotations.Test;
+
 import java.util.List;
+
+import static Base.Utils.LogInCombineEmailData;
 
 
 public class LogInTest extends Setup {
+
     @Test(groups = {"Cross"})
-    public void LogInCross() throws InterruptedException {
+    public void LogIn() throws InterruptedException {
         driver.findElementByAccessibilityId(StartPage.LOGIN_Btn.getId()).click();
         driver.findElementByAccessibilityId(LogInPage.Log_In_With_Email.getId()).click();
 
@@ -25,6 +28,7 @@ public class LogInTest extends Setup {
             findElementByContentDesc(LogInPage.Log_In_Done.getId()).click();
             Thread.sleep(3000);
             assert DoesExist(LogInPage.Password_Input.getId()) : "DashBoard should not be entered";
+            //Assert.assertTrue(findElementByRescId_Android(LogInPage.Password_Input.getId()).isDisplayed(),"Errrrrrrrrrrrrrr");
         }
         findElementByText(LogInPage.Email_Input.getId()).click();
         findElementByText(LogInPage.Email_Input.getId()).replaceValue(validRow[0]);
@@ -36,4 +40,9 @@ public class LogInTest extends Setup {
         assert !DoesExist(LogInPage.Password_Input.getId()) : "DashBoard should be reached, but it's not";
         assert DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
     }
+
+    public void validLogIn() {
+        //TODO: implement a valid log in test case, used in navigating the rest of the app
+    }
+
 }
