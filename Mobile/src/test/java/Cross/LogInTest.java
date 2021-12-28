@@ -7,6 +7,8 @@ import java.util.List;
 
 import static Base.Utils.LogInCombineEmailData;
 
+import io.appium.java_client.MobileElement;
+import pro.truongsinh.appium_flutter.FlutterFinder;
 
 public class LogInTest extends Setup {
 
@@ -41,8 +43,14 @@ public class LogInTest extends Setup {
         assert DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
     }
 
-    public void validLogIn() {
+    @Test(groups = {"Cross"})
+    public void validLogIn() throws InterruptedException {
         //TODO: implement a valid log in test case, used in navigating the rest of the app
+        FlutterFinder find = new FlutterFinder(driver);
+        Thread.sleep(3000);
+
+        MobileElement  add_post_button = find.byValueKey("ActionButton");
+        add_post_button.click();
     }
 
 }

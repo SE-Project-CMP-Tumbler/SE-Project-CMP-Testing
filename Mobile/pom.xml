@@ -38,6 +38,30 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>pro.truongsinh</groupId>
+            <artifactId>appium-flutter-finder</artifactId>
+            <version>0.0.4</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>saucelabs-repository</id>
+            <url>https://repository-saucelabs.forge.cloudbees.com/release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>local-maven-repo</id>
+            <url>${project.basedir}/repository</url>
+        </repository>
+    </repositories>
 
 </project>

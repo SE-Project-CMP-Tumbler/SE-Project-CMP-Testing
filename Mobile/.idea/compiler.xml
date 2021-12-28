@@ -11,5 +11,8 @@
         <module name="appTest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="appium-flutter-finder" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
