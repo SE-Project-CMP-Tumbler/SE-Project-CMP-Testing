@@ -89,6 +89,11 @@ public class Setup {
                 driver.findElement(By.xpath("//[@bounds='" + text + "']"));
     }
 
+    public AndroidElement findElementByClass(String text) {
+        return (AndroidElement)
+                driver.findElement(By.className(text));
+    }
+
     public boolean DoesExist(String text) {
         try {
             findElementByRescId_Android(text);
