@@ -73,6 +73,15 @@ pipeline {
   }
 
   post {
+    always {
+      discordSend(
+        title: 'Frontend E2E Testing',
+        link: env.BUILD_URL,
+        description: "Testing Status: ${currentBuild.currentResult}",
+        result: currentBuild.currentResult,
+        thumbnail: 'https://i.dlpng.com/static/png/6378770_preview.png',
+        webhookURL: 'https://discord.com/api/webhooks/921772869782994994/mi4skhArIoT6heXWebPiWLn6Xc95rZgUqtW7qriBOYvnl0sTdfn16we7yPY-n-DJYRmH'
+    }
     unsuccessful {
       sh 'docker container stop tumbler-e2e-testing || true'
       sh 'docker image remove tumbler-e2e-testing || true'
