@@ -49,7 +49,7 @@ pipeline {
       steps {
         sh 'sudo rm -rf /var/www/html/*'
         sh 'sudo docker cp tumbler-e2e-testing:/testing/index.html /var/www/html/'
-        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports/ /var/www/html/'
+        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports/ /var/www/html/ || echo "Didn\'t find reports file!"'
       }
     }
 
