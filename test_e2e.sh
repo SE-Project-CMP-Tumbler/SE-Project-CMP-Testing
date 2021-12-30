@@ -18,10 +18,12 @@ mkdir -p reports
 npx cypress run --quiet --config "baseUrl=http://web.dev.tumbler.social" 
 
 # combine-reports
-mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json
+# mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json
+npm run combine-reports
 
 # generate-report
-marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports
+# marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports
+npm run generate-report
 
 # move report to report folder
 mv cypress/reports/mochareports/ reports/
