@@ -2,11 +2,13 @@ pipeline {
   triggers {
     cron('0 0 * * *')
   }
+
   agent {
     node {
       label 'azure-server'
     }
   }
+
   stages {
     stage('Debug Info') {
       steps {
@@ -51,15 +53,15 @@ pipeline {
     stage('Publish the reports') {
       steps {
         sh 'sudo rm -rf /var/www/html'
-        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports /var/www/html || true'
-        sh 'sudo chmod -R 775 /var/www/html || true'
+        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports /var/www/html'
+        sh 'sudo chmod -R 775 /var/www/html'
       }
     }
 
     stage('Stop Container & Remove Image') {
       steps {
         sh 'docker container stop tumbler-e2e-testing'
-        // sh 'docker system prune -f'
+        sh 'docker system prune -f'
         // sh 'docker image remove tumbler-e2e-testing'
       }
     }
@@ -83,6 +85,7 @@ pipeline {
         webhookURL: 'https://discord.com/api/webhooks/921772869782994994/mi4skhArIoT6heXWebPiWLn6Xc95rZgUqtW7qriBOYvnl0sTdfn16we7yPY-n-DJYRmH'
       )
     }
+
     unsuccessful {
       sh 'docker container stop tumbler-e2e-testing || true'
       sh 'docker image remove tumbler-e2e-testing || true'
