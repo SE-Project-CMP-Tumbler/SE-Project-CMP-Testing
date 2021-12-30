@@ -91,9 +91,5 @@ pipeline {
       sh 'docker image remove tumbler-e2e-testing || true'
       sh 'docker system prune -f'
     }
-
-    cleanup {
-      cleanWs()
-    }
   }
 }
