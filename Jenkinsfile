@@ -55,8 +55,8 @@ pipeline {
     stage('Stop Container & Remove Image') {
       steps {
         sh 'docker container stop tumbler-e2e-testing'
-        sh 'docker image remove tumbler-e2e-testing'
-        sh 'docker system prune -f'
+        // sh 'docker image remove tumbler-e2e-testing'
+        // sh 'docker system prune -f'
       }
     }
 
