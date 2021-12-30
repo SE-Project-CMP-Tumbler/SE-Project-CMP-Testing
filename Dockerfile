@@ -8,10 +8,12 @@ WORKDIR /testing
 # https://github.com/cypress-io/cypress/issues/1243
 ENV CI=1
 
-COPY . .
-
-RUN cd ./Web/
+COPY ./Web/package.json ./Web/package.json
 
 # install dependencies
-RUN npm install
+RUN cd Web && npm install
 
+# copy everything
+COPY . /testing
+
+RUN cd /testing
