@@ -7,7 +7,7 @@ rm -rf cypress/reports && mkdir cypress/reports  && mkdir cypress/reports/mochar
 rm -rf  ./reports
 
 # run tests
-npx cypress run --quiet --config "baseUrl=http://tumbler.social" 
+npx cypress run --quiet --config "baseUrl=http://web.dev.tumbler.social" 
 
 # combine-reports
 mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json
