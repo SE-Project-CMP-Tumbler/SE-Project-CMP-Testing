@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'auzre-server'
+    }
+  }
   stages {
     stage('Debug Info') {
       steps {
@@ -32,6 +36,19 @@ pipeline {
     stage('Test') {
       steps {
         sh 'docker exec tumbler-e2e-testing sh -c \'bash test.sh\''
+      }
+    }
+
+    stage('E2E-Test') {
+      steps {
+        sh 'docker exec tumbler-e2e-testing sh -c \'bash test_e2e.sh\''
+      }
+    }
+
+    stage('Publish the reports') {
+      steps {
+        sh 'sudo rm -f /var/www/html/*'
+        sh 'docker cp tumbler-e2e-testing:/testing/reports/ /var/www/html/'
       }
     }
 
