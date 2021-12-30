@@ -50,11 +50,9 @@ pipeline {
 
     stage('Publish the reports') {
       steps {
-        sh 'sudo rm -rf /var/www/html/*'
+        sh 'sudo rm -rf /var/www/html'
+        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports /var/www/html || true'
         sh 'sudo chmod -R 775 /var/www/html'
-        sh 'sudo docker cp tumbler-e2e-testing:/testing/reports/ /var/www/html/ || true'
-        sh 'sudo mv -f /var/www/html/reports/* /var/www/html || true'
-        sh 'sudo rm -rf /var/www/html/reports'
       }
     }
 
