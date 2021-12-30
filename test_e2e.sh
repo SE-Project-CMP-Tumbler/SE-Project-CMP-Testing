@@ -14,9 +14,6 @@ mkdir -p cypress/reports/mochareports
 # useless LOC
 rm -rf ../reports
 
-# make a new reports dir
-mkdir -p ../reports
-
 # run tests
 npx cypress run --quiet --config "baseUrl=http://web.dev.tumbler.social" 
 
