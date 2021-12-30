@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'auzre-server'
+      label 'azure-server'
     }
   }
   stages {
