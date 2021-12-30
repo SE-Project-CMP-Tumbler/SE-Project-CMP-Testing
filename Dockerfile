@@ -1,7 +1,5 @@
-FROM cypress/included:8.7.0
+FROM cypress/base
 
-# Update the dependencies to get the latest and greatest (and safest!) packages.
-RUN apt update && apt upgrade -y
 WORKDIR /testing
 
 # avoid too many progress messages
@@ -12,6 +10,9 @@ COPY ./Web/package.json ./Web/package.json
 
 # install dependencies
 RUN cd Web && npm install
+
+# verify installation
+RUN npx cypress verify
 
 # copy everything
 COPY . /testing
