@@ -52,7 +52,7 @@ pipeline {
       steps {
         sh 'sudo rm -rf /var/www/html'
         sh 'sudo docker cp tumbler-e2e-testing:/testing/reports /var/www/html || true'
-        sh 'sudo chmod -R 775 /var/www/html'
+        sh 'sudo chmod -R 775 /var/www/html || true'
       }
     }
 
