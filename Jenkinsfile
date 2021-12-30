@@ -1,4 +1,7 @@
 pipeline {
+  triggers {
+    cron('0 0 * * *')
+  }
   agent {
     node {
       label 'azure-server'
