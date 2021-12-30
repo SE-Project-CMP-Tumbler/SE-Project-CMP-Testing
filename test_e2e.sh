@@ -28,5 +28,3 @@ mv cypress/reports/mochareports/ reports/
 
 # rename html
 mv reports/report.html reports/index.html
-
-exit 0
