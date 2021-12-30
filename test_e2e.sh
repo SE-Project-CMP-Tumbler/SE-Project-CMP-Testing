@@ -2,6 +2,9 @@
 # utilities before hand, and delete these utilities later on.
 # test other teams' work.
 
+# navigate
+cd ./Web/
+
 # clean old reports
 rm -rf cypress/reports
 
@@ -9,10 +12,10 @@ rm -rf cypress/reports
 mkdir -p cypress/reports/mochareports
 
 # useless LOC
-rm -rf ./reports
+rm -rf ../reports
 
 # make a new reports dir
-mkdir -p reports
+mkdir -p ../reports
 
 # run tests
 npx cypress run --quiet --config "baseUrl=http://web.dev.tumbler.social" 
@@ -26,7 +29,7 @@ npm run combine-reports
 npm run generate-report
 
 # move report to report folder
-mv cypress/reports/mochareports/ reports/
+mv cypress/reports/mochareports/ ../reports/
 
 # rename html
-mv reports/report.html reports/index.html
+mv ../reports/report.html ../reports/index.html
