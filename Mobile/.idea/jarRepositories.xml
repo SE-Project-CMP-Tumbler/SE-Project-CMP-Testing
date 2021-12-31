@@ -34,6 +34,11 @@
     <remote-repository>
       <option name="id" value="local-maven-repo" />
       <option name="name" value="local-maven-repo" />
+      <option name="url" value="D:\Workspaces\SE-Project-CMP-Testing\Mobile/repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="local-maven-repo" />
+      <option name="name" value="local-maven-repo" />
       <option name="url" value="file:///Users/truongsinh/Dev/flutter/appium-flutter-driver/finder/kotlin/build/repository" />
     </remote-repository>
   </component>

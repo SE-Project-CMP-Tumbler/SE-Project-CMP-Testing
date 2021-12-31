@@ -77,26 +77,19 @@ public class LogInTest extends Setup {
     @Test(groups = {"Cross"})
     public void addPostButton() throws InterruptedException {
 
-//        validLogIn();
+        //validLogIn();
 
         FlutterFinder find = new FlutterFinder(driver);
         Thread.sleep(5000);
 
-        // kimoooooooo
-        TouchAction a2 = new TouchAction(driver)
-                .tap(point(437, 667))
-                .perform();
+        Utils.touch(895,1800);
 
-//        MobileElement add_post_button = find.byValueKey("ActionButton");
-//        add_post_button.click();
+        // add_post_button.click();
 
         findElementByText("Add something, if you'd like").click();
 //        findElementByText("Add something, if you'd like").sendKeys("Hello world!");
 
-        // kimoooooooo
-        Actions a = new Actions(driver);
-        a.sendKeys("foo");
-        a.perform();
+        Utils.sendKeys("foo");
 
 //        List<String> write_text_args = Arrays.asList("AAAAAAAAAA");
 //        Map<String, Object> write_text = ImmutableMap

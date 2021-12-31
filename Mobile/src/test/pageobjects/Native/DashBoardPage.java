@@ -1,7 +1,11 @@
 package Native;
 
 public enum DashBoardPage {
-    CreatePostButton("createPostButton");
+    CreatePostButton("createPostButton"),
+    HomeButton("Home"),
+    SearchButton("Search"),
+    MessagesButton("Activity"),
+    ProfileButton("Profile");
     private final String text;
 
     DashBoardPage(String txt) {
