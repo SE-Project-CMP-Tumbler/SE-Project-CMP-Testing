@@ -1,19 +1,22 @@
 package Native;
 
-public enum DashBoardPage {
-    CreatePostButton("createPostButton"),
-    HomeButton("Home"),
-    SearchButton("Search"),
-    MessagesButton("Activity"),
-    ProfileButton("Profile");
-    private final String text;
+import Base.Selector;
+import Base.Selector.Identifier;
 
-    DashBoardPage(String txt) {
-        text = txt;
+public enum DashBoardPage {
+    CreatePostButton(Identifier.findByRescId, "createPostButton"),
+    HomeButton(Identifier.findByContDesc, "Home"),
+    SearchButton(Identifier.findByRescId, "Search"),
+    MessagesButton(Identifier.findByContDesc, "Activity"),
+    ProfileButton(Identifier.findByContDesc, "Profile");
+    private final Selector S;
+
+    DashBoardPage(Identifier f, String i) {
+        S = new Selector(f, i);
     }
 
-    public String getId() {
-        return text;
+    public Selector getId() {
+        return S;
     }
 }
 

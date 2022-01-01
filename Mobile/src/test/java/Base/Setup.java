@@ -2,33 +2,46 @@ package Base;
 
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
+import org.testng.IReporter;
 public class Setup {
-    static public AndroidDriver driver;
 
+    static public AndroidDriver driver;
+    static final String platform="Android";
+    static final String platformVersion="11";
+    static final String automationName="UiAutomator2";
+    static final String deviceName="Pixel";
+    static final String avd="Pixel";
+    static final String crossAppPackage="com.tumbler";
+    static final String crossAppActivity="com.tumbler.MainActivity";
+    static final Activity crossActivity = new Activity(crossAppPackage, crossAppActivity);
+    static final String nativeAppPackage="com.example.tumbler";
+    static final String nativeAppActivity="com.example.tumbler.SplashScreenActivity";
+    static final Activity nativeActivity = new Activity(nativeAppPackage, nativeAppActivity);
+    static final String appiumURL="http://localhost:4723/wd/hub";
+
+    /*
+    * Setup function
+    *
+    * */
     @Test
     @BeforeGroups(groups = {"Native","Cross"})
     public void setup() {
 
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "11");
-        caps.setCapability("automationName", "UiAutomator2");
-        caps.setCapability("deviceName", "Pixel");
-        //caps.setCapability("appPackage","com.example.tumbler");
-        //caps.setCapability("appActivity","com.example.tumbler.SplashScreenActivity");
-        caps.setCapability("avd", "Pixel");
+        caps.setCapability("platformName", platform);
+        caps.setCapability("platformVersion", platformVersion);
+        caps.setCapability("automationName", automationName);
+        caps.setCapability("deviceName", deviceName);
+        caps.setCapability("avd",avd);
+        caps.setCapability("noReset","true");
 
         try {
             driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
@@ -37,79 +50,25 @@ public class Setup {
         }
 
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-
+        System.out.println(driver.currentActivity());
     }
+
     @Test
     @BeforeGroups(groups = "Native",dependsOnMethods = {"setup"})
     public void NativeApp() {
-        final Activity activity = new Activity("com.example.tumbler", "com.example.tumbler.SplashScreenActivity");
-        driver.startActivity(activity);
+        driver.startActivity(nativeActivity);
     }
     @Test
     @BeforeGroups(groups = "Cross",dependsOnMethods = {"setup"})
     public void CrossApp() {
-        final Activity activity = new Activity("com.tumbler", "com.tumbler.MainActivity");
-        driver.startActivity(activity);
+        driver.startActivity(crossActivity);
+
     }
 
     @AfterTest
-    public void Close() {
+    public void tearDown() {
         if (driver != null)
             driver.quit();
     }
 
-    public AndroidElement findElementByText(String text) {
-        return (AndroidElement)
-                driver.findElementByAndroidUIAutomator(
-                        "new UiSelector().textContains(\"" + text + "\")");
-    }
-
-    public AndroidElement findElementByContentDesc(String text) {
-        return (AndroidElement)
-                driver.findElementByAndroidUIAutomator(
-                        "new UiSelector().descriptionContains(\"" + text + "\")");
-    }
-    public AndroidElement findElementByRescId_Android(String text) {
-        String appPackage = "com.example.tumbler";
-
-        return (AndroidElement)
-                driver.findElement(By.id(appPackage + ":id/" + text));
-    }
-
-    public AndroidElement findElementByRescId_Cross(String text) {
-        String appPackage = "com.tumbler";
-
-        return (AndroidElement)
-                driver.findElement(By.id(appPackage + ":id/" + text));
-    }
-
-
-    public AndroidElement findElementByBounds(String text) {
-        return (AndroidElement)
-                driver.findElement(By.xpath("//[@bounds='" + text + "']"));
-    }
-
-    public AndroidElement findElementByClass(String text) {
-        return (AndroidElement)
-                driver.findElement(By.className(text));
-    }
-
-    public boolean DoesExist(String text) {
-        try {
-            findElementByRescId_Android(text);
-            return true;
-        } catch (Exception e) {
-            try {
-                findElementByText(text);
-                return true;
-            } catch (Exception ee) {
-                try {
-                    findElementByRescId_Cross(text);
-                    return true;
-                } catch (Exception eee) {
-                    return false;
-                }
-            }
-        }
-    }
 }

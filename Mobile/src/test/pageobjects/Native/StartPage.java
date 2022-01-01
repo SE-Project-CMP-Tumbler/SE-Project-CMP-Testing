@@ -1,20 +1,23 @@
 package Native;
 
+import Base.Selector;
+import Base.Selector.Identifier;
+
 public enum StartPage {
-    Next_Btn("Next"),
-    Skip_Btn("Skip"),
-    LOGIN_Btn("LOG IN"),
-    SIGN_UP_Btn("SIGN UP");
+    Next_Btn(Identifier.findByText,"Next"),
+    Skip_Btn(Identifier.findByText,"Skip"),
+    LOGIN_Btn(Identifier.findByText,"LOG IN"),
+    SIGN_UP_Btn(Identifier.findByText,"SIGN UP");
 
 
-    private final String text;
+    private final Selector S;
 
-    StartPage(String txt) {
-        text = txt;
+    StartPage(Identifier f,String i) {
+        S=new Selector(f,i);
     }
 
-    public String getId() {
-        return text;
+    public Selector getId() {
+        return S;
     }
 }
 

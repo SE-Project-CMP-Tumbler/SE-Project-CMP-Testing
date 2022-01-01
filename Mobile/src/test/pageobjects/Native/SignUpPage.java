@@ -1,22 +1,26 @@
 package Native;
 
+import Base.Selector;
+import Base.Selector.Identifier;
+
 public enum SignUpPage {
 
-    SIGN_UP_WITH_EMAIL("SIGN UP WITH EMAIL"),
-    SIGN_UP_WITH_Google("SIGN UP IN WITH GOOGLE"),
-    In_The_SamePage("What should we call you?"),
-    Done("sign_up_done_txt"),
-    Email_field("signup_txt_email"),
-    Pass_field("signup_txt_password"),
-    Name_field("signup_txt_name"),
-    Age_field("signup_txt_age");
-    private final String text;
+    SIGN_UP_WITH_EMAIL(Identifier.findByText, "SIGN UP WITH EMAIL"),
+    SIGN_UP_WITH_Google(Identifier.findByText, "SIGN UP IN WITH GOOGLE"),
+    In_The_SamePage(Identifier.findByRescId, "What should we call you?"),
+    Done(Identifier.findByRescId, "sign_up_done_txt"),
+    Email_field(Identifier.findByRescId, "signup_txt_email"),
+    Pass_field(Identifier.findByRescId, "signup_txt_password"),
+    Name_field(Identifier.findByRescId, "signup_txt_name"),
+    Age_field(Identifier.findByRescId, "signup_txt_age");
+    private final Selector S;
 
-    SignUpPage(String txt) {
-        text = txt;
+    SignUpPage(Identifier f, String i) {
+
+        S = new Selector(f, i);
     }
 
-    public String getId() {
-        return text;
+    public Selector getId() {
+        return S;
     }
 }

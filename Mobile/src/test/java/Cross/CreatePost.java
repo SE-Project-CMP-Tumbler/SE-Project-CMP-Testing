@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import java.util.List;
 
+import static Cross.Utils.*;
 public class CreatePost extends Setup {
     @Test
     private void logIn() {
