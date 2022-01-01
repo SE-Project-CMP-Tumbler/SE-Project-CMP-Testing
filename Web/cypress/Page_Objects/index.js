@@ -1,4 +1,3 @@
-export * as ACCOUNT_DELETED from './Account_Deleted.json'
 export * as DASHBOARD from './Dashboard.json'
 export * as DELETE_ACCOUNT from './Delete_Account.json'
 export * as FORGOT_PASSWORD from './Forgot_Password.json'

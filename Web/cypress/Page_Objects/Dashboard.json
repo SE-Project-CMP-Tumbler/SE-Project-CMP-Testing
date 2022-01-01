@@ -1,4 +1,21 @@
 {
   "URL": "/dashboard",
-  "NEW-VIEW_POSTS_DIV": ".MuiGrid-root.MuiGrid-container.MuiGrid-item.MuiGrid-spacing-xs-8.MuiGrid-direction-xs-column.MuiGrid-grid-xs-12.MuiGrid-grid-md-8.css-1jnhrwk-MuiGrid-root"
+  
+  "HOME": "a[href='/dashboard']",
+  "EXPLORE": "a[href='/explore/recommended-for-you']",
+  "INBOX": "a[href*='/inbox']",
+  "CHAT": {
+    "_": ""
+  },
+  "NOTIFICATIONS": {
+    "_": "[title='Notifications']"
+  },
+  "ACCOUNT": {
+    "_": "[title='My Tumblrs']",
+    "LOGOUT": "Log out"
+  },
+
+  "CHECK_OUT_DIV": "div.side:nth-child(1)",
+  "RADAR_DIV": "div.side:nth-child(2)",
+  "NEW_POST": "a[href*='/new']"
 }
