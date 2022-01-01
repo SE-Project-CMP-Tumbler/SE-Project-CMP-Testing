@@ -1,6 +1,6 @@
 package Cross;
 
-import org.openqa.selenium.By;
+import Base.Selector;
 
 public enum DashBoardPage {
     //CreatePostButton("createPostButton"),

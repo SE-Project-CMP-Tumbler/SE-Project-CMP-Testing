@@ -5,7 +5,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static Base.Utils.SignUpCombineEmailData;
+import static Base.Utils.*;
+import static Cross.Utils.*;
 
 public class SignUpTest extends Setup {
     @Test(groups = {"Cross"})
