@@ -54,7 +54,7 @@ describe('Elements of Dashboard Page', () => {
   })
 
   it('Should contain multiple posts', () => {
-    cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.at.least', 1)
+    cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.at.least', 2)
   })
 
   it('Posts should contain data', () => {

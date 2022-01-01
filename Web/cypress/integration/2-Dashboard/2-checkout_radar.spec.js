@@ -34,7 +34,7 @@ describe('Checkout and Radar Components', () => {
       cy.get(SEL.DASHBOARD.RADAR.BLOG).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(10000)
-      cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text').should('have.string', 'Un')
+      cy.get(SEL.PROFILE_SIDE.FOLLOW).invoke('text').should('have.string', 'Un')
     })
   })
 

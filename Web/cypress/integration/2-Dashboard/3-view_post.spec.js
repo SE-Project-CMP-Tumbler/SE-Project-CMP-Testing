@@ -10,7 +10,7 @@ describe('Viewing Dashboard Posts', () => {
     cy.wait(9000)
   })
 
-  it('Saving fist post\'s notes count', () => {
+  it('Saving first post\'s notes count', () => {
     // eslint-disable-next-line cypress/no-assigning-return-values
     oldNotes = parseInt(cy.get(SEL.DASHBOARD.POSTS.NOTES).get(1).invoke('text'))
   })
@@ -67,12 +67,6 @@ describe('Viewing Dashboard Posts', () => {
       .then(quotes => {
         cy.window().scrollTo('bottom')
         cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length', quotes.length * 2)
-
-        cy.window().scrollTo('bottom')
-        cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length', quotes.length * 3)
-
-        cy.window().scrollTo('bottom')
-        cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length', quotes.length * 4)
       })
   })
 
@@ -99,7 +93,7 @@ describe('Viewing Dashboard Posts', () => {
     })
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(13000)
-    cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text')
+    cy.get(SEL.PROFILE_SIDE.FOLLOW).invoke('text')
       .should('not.have.string', 'Un')
   })
 })
