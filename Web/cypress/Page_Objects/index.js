@@ -1,3 +1,4 @@
+export * as BLOG_VIEW from './Blog_view.json'
 export * as DASHBOARD from './Dashboard.json'
 export * as DELETE_ACCOUNT from './Delete_Account.json'
 export * as FORGOT_PASSWORD from './Forgot_Password.json'

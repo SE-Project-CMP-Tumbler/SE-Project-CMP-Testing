@@ -59,7 +59,7 @@ describe('Elements of Dashboard Page', () => {
 
   it('Posts should contain data', () => {
     cy.get(SEL.DASHBOARD.POSTS.BODY).each(($el) => {
-      cy.wrap($el).should('not.have.html', '<span class="text"></span>')
+      cy.wrap($el).should('not.have.html', '<span></span>')
     })
   })
 })

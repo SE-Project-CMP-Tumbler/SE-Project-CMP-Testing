@@ -56,7 +56,7 @@
 
   "RADAR": {
     "BLOG": "div.side:nth-child(2) a.blogname",
-    "FOOLOW": "div.side:nth-child(2) .f",
+    "FOLLOW": "div.side:nth-child(2) .f",
     "BODY": "div.side:nth-child(2) .postBody span",
     "NOTES": "div.side:nth-child(2) .notediv span",
     "SEND": "div.side:nth-child(2) [aria-label='Send to message']",
