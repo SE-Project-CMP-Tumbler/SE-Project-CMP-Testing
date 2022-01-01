@@ -3,10 +3,8 @@
 import * as SEL from '../../Page_Objects/'
 
 describe('New Posts tests', () => {
-  beforeEach(() => {
+  before(() => {
     cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(7000)
   })
 
   it('Post text button exists', () => {
@@ -36,6 +34,8 @@ describe('New Posts tests', () => {
   })
 
   it('Posting video from web', () => {
+    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+
     const testVid = 'https://www.youtube.com/watch?v=d6gBu2Zd7Bc&list=PLPPomK5QKeyWV7PYC9s-PxrDhVIDpt4Oe&index=5'
     cy.get(SEL.NEW_POST.PHOTO).click()
     cy.get(SEL.NEW_POST.PHOTO_ADD).eq(1).click()
@@ -50,18 +50,20 @@ describe('New Posts tests', () => {
   })
 
   context('Posting Text', () => {
-    beforeEach(() => {
-      cy.get(SEL.NEW_POST.TEXT).click()
-    })
-
     it('redirect to dashboard if canceled', () => {
+      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.get(SEL.NEW_POST.TEXT).click()
+
       cy.get(SEL.NEW_POST.CANCEL).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(3000)
-      cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.at.least', 2)
+      cy.get(SEL.DASHBOARD.RADAR.BLOG).should('exist')
     })
 
     it('Basic post', () => {
+      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.get(SEL.NEW_POST.TEXT).click()
+
       const testText = 'testt1323-_*&^%'
       cy.get(SEL.NEW_POST.TEXT_AREA).type(testText)
       cy.get(SEL.NEW_POST.SUBMIT).click()
@@ -74,18 +76,26 @@ describe('New Posts tests', () => {
   })
 
   it('Edit Post', () => {
+    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(30000)
+
     cy.get(SEL.DASHBOARD.POSTS.EDIT).should('exist')
-      .eq(0).click()
+      .eq(0).click({ force: true })
     cy.get(SEL.NEW_POST.TEXT_AREA).should('exist')
   })
 
   it('Delete Post', () => {
+    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(30000)
+
     cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.greaterThan', 5)
       .then($n => {
         cy.get(SEL.DASHBOARD.POSTS.DELETE).should('exist')
-          .eq(0).click()
+          .eq(0).click({ force: true })
         cy.get(SEL.DASHBOARD.POSTS.DELETE_CONFIRM).should('exist')
-          .click()
+          .click({ force: true })
       })
   })
 })

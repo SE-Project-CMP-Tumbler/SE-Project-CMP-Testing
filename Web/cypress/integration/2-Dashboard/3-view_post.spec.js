@@ -50,7 +50,7 @@ describe('Viewing Dashboard Posts', () => {
     cy.get(SEL.NEW_POST.SUBMIT).click()
 
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(3000)
+    cy.wait(13000)
     cy.get(SEL.DASHBOARD.POSTS.BODY).eq(0).then($ele => {
       expect($ele.html()).to.contain(oldPost)
     })
