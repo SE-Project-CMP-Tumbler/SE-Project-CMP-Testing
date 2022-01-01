@@ -7,7 +7,7 @@ describe('Viewing Dashboard Posts', () => {
   before(() => {
     cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(3000)
+    cy.wait(9000)
   })
 
   it('Saving fist post\'s notes count', () => {
@@ -42,14 +42,17 @@ describe('Viewing Dashboard Posts', () => {
 
   it('Reblog', () => {
     // eslint-disable-next-line cypress/no-assigning-return-values
-    const oldPost = cy.get(SEL.DASHBOARD.POSTS.BODY).eq(0).invoke('text')
+    let oldPost = ''
+    cy.get(SEL.DASHBOARD.POSTS.BODY).eq(0).then($ele => {
+      oldPost = $ele.html()
+    })
     cy.get(SEL.DASHBOARD.POSTS.REBLOG).eq(0).click()
     cy.get(SEL.NEW_POST.SUBMIT).click()
 
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(3000)
-    cy.get(SEL.DASHBOARD.POSTS.BODY).eq(0).then(($ele) => {
-      cy.wrap($ele).should('have.string', oldPost)
+    cy.get(SEL.DASHBOARD.POSTS.BODY).eq(0).then($ele => {
+      expect($ele.html()).to.contain(oldPost)
     })
   })
 
@@ -58,6 +61,7 @@ describe('Viewing Dashboard Posts', () => {
       .should('be.gt', oldNotes)
   })
 
+  // https://github.com/bahmutov/infinite-scroll-quotes/blob/main/cypress/integration/spec.js
   it('infinite scroll and pagination', () => {
     cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.greaterThan', 5)
       .then(quotes => {
@@ -70,5 +74,32 @@ describe('Viewing Dashboard Posts', () => {
         cy.window().scrollTo('bottom')
         cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length', quotes.length * 4)
       })
+  })
+
+  it('Unfollow a user from dashboard', () => {
+    cy.scrollTo('top')
+    // get first post by a followed user
+    cy.get(SEL.DASHBOARD.POSTS.BLOG).each($post => {
+      if ($post.prop('href').indexOf('hsn') === -1) {
+        cy.wrap($post).parent().parent().parent()
+          .parent().parent().within(_ => {
+            cy.get("[aria-label='More']").click()
+          })
+        cy.get(SEL.DASHBOARD.POSTS.OPTIONS.UN_FOLLOW).click()
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(3000)
+        cy.get(SEL.DASHBOARD.POSTS.OPTIONS.CLOSE).click()
+
+        cy.get(SEL.DASHBOARD.POSTS.FOLLOW).invoke('text')
+          .should('not.have.string', 'Un')
+
+        cy.visit($post.prop('href'))
+        return false
+      }
+    })
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(13000)
+    cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text')
+      .should('not.have.string', 'Un')
   })
 })

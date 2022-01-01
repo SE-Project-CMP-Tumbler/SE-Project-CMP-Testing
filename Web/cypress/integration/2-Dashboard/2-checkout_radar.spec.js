@@ -33,7 +33,7 @@ describe('Checkout and Radar Components', () => {
       cy.get(SEL.DASHBOARD.RADAR.FOLLOW).click()
       cy.get(SEL.DASHBOARD.RADAR.BLOG).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(7000)
+      cy.wait(10000)
       cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text').should('have.string', 'Un')
     })
   })
@@ -58,7 +58,7 @@ describe('Checkout and Radar Components', () => {
         cy.visit(href)
       })
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(11000)
+      cy.wait(10000)
       cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text').should('have.string', 'Un')
     })
   })
