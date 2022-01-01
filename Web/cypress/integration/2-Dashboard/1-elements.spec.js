@@ -52,4 +52,14 @@ describe('Elements of Dashboard Page', () => {
   it('Search bar', () => {
     cy.get(SEL.DASHBOARD.SEARCH_BAR).should('exist')
   })
+
+  it('Should contain multiple posts', () => {
+    cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.at.least', 1)
+  })
+
+  it('Posts should contain data', () => {
+    cy.get(SEL.DASHBOARD.POSTS.BODY).each(($el) => {
+      cy.wrap($el).should('not.have.html', '<span class="text"></span>')
+    })
+  })
 })

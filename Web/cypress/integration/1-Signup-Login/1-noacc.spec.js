@@ -57,6 +57,6 @@ describe('No-account Tests', () => {
 
   it('Should redirect away of dashboard', () => {
     cy.visit(DASHBOARD.URL)
-    cy.get(DASHBOARD.RADAR_DIV).should('not.exist')
+    cy.get(DASHBOARD.SEARCH_BAR).should('not.exist')
   })
 })
