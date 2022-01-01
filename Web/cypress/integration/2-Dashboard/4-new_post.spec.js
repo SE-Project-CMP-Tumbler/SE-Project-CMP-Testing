@@ -4,7 +4,7 @@ import * as SEL from '../../Page_Objects/'
 
 describe('New Posts tests', () => {
   before(() => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
   })
 
   it('Post text button exists', () => {
@@ -34,7 +34,7 @@ describe('New Posts tests', () => {
   })
 
   it('Posting video from web', () => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
 
     const testVid = 'https://www.youtube.com/watch?v=d6gBu2Zd7Bc&list=PLPPomK5QKeyWV7PYC9s-PxrDhVIDpt4Oe&index=5'
     cy.get(SEL.NEW_POST.PHOTO).click()
@@ -51,7 +51,7 @@ describe('New Posts tests', () => {
 
   context('Posting Text', () => {
     it('redirect to dashboard if canceled', () => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       cy.get(SEL.NEW_POST.TEXT).click()
 
       cy.get(SEL.NEW_POST.CANCEL).click()
@@ -61,7 +61,7 @@ describe('New Posts tests', () => {
     })
 
     it('Basic post', () => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       cy.get(SEL.NEW_POST.TEXT).click()
 
       const testText = 'testt1323-_*&^%'
@@ -76,7 +76,7 @@ describe('New Posts tests', () => {
   })
 
   it('Edit Post', () => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(30000)
 
@@ -86,7 +86,7 @@ describe('New Posts tests', () => {
   })
 
   it('Delete Post', () => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(30000)
 

@@ -5,7 +5,7 @@ import * as SEL from '../../Page_Objects/'
 describe('Checkout and Radar Components', () => {
   describe('Radar component', () => {
     before(() => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(3000)
     })
@@ -40,7 +40,7 @@ describe('Checkout and Radar Components', () => {
 
   describe('Checkout component', () => {
     before(() => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(3000)
     })

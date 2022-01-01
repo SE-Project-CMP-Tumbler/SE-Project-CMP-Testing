@@ -5,7 +5,7 @@ import * as SEL from '../../Page_Objects/'
 describe('Viewing Dashboard Posts', () => {
   let oldNotes = 0
   before(() => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(9000)
   })

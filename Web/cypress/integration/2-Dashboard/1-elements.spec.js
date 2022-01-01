@@ -4,7 +4,7 @@ import * as SEL from '../../Page_Objects/'
 
 describe('Elements of Dashboard Page', () => {
   before(() => {
-    cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+    cy.login(0)
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(3000)
   })
