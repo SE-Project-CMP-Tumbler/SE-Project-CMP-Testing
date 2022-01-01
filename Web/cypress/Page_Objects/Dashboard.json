@@ -1,11 +1,15 @@
 {
   "URL": "/dashboard",
-  
+
+  "SEARCH_BAR": ".search-bar",
+  "NEWS_FEED": ".infinite-scroll-component",
+  "POSTS": ".infinite-scroll-component > ",
+
   "HOME": "a[href='/dashboard']",
   "EXPLORE": "a[href='/explore/recommended-for-you']",
   "INBOX": "a[href*='/inbox']",
   "CHAT": {
-    "_": ""
+    "_": "div.drop.chat-drop"
   },
   "NOTIFICATIONS": {
     "_": "[title='Notifications']"
@@ -14,8 +18,28 @@
     "_": "[title='My Tumblrs']",
     "LOGOUT": "Log out"
   },
+  "NEW_POST": "a[href*='/new']",
 
-  "CHECK_OUT_DIV": "div.side:nth-child(1)",
-  "RADAR_DIV": "div.side:nth-child(2)",
-  "NEW_POST": "a[href*='/new']"
+  "CHECK_OUT_BLOGS": "li.check",
+  "CHECK_OUT1": {
+    "BLOG": "li.check:nth-child(1) a.blogname",
+    "FOLLOW": "li.check:nth-child(1) .f"
+  },
+  "CHECK_OUT2": {
+    "BLOG": "li.check:nth-child(2) a.blogname",
+    "FOLLOW": "li.check:nth-child(2) .f"
+  },
+  "CHECK_OUT3": {
+    "BLOG": "li.check:nth-child(3) a.blogname",
+    "FOLLOW": "li.check:nth-child(3) .f"
+  },
+  "CHECK_OUT4": {
+    "BLOG": "li.check:nth-child(4) a.blogname",
+    "FOLLOW": "li.check:nth-child(4) .f"
+  },
+
+  "RADAR": {
+    "BLOG": "div.side:nth-child(2) a.blogname",
+    "FOOLOW": "div.side:nth-child(2) .f"
+  }
 }
