@@ -1,24 +1,11 @@
 package Cross;
 
 import Base.Setup;
-import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.TapOptions;
-
-import static io.appium.java_client.touch.offset.PointOption.point;
-
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import static Base.Utils.LogInCombineEmailData;
-
-import io.appium.java_client.MobileElement;
-import pro.truongsinh.appium_flutter.FlutterFinder;
 
 public class LogInTest extends Setup {
 
@@ -52,7 +39,7 @@ public class LogInTest extends Setup {
         Thread.sleep(3000);
 
         assert !Utils.DoesExist(LogInPage.Password_Input.getId()) : "DashBoard should be reached, but it's not";
-        assert Utils.DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
+        assert Utils.DoesExist(DashBoardPage.CreatePostButton.getId().id) : "New posts should be addable";
     }
 
     @Test(groups = {"Cross"})
