@@ -1,0 +1,41 @@
+{
+  "URL": {
+    "K": "/blog/karm",
+    "H": "/blog/hsn"
+  },
+
+  "POSTS":{
+    "BLOG": ".infinite-scroll-component a.blogname",
+    "FOLLOW": ".infinite-scroll-component .f",
+    "BODY": ".infinite-scroll-component .postBody",
+    "TAGS": ".infinite-scroll-component [data-testid='tag-link']",
+    "NOTES": ".infinite-scroll-component .notediv span",
+    "SEND": ".infinite-scroll-component [aria-label='Send to message']",
+    "COMMENT": ".infinite-scroll-component [aria-label='add note']",
+    "COMMENT_WRITE": "textarea[aria-invalid='false'][autocomplete='false'][id='standard-basic'][placeholder='Have something to say ?']",
+    "COMMENT_SEND": "Reply",
+    "COMMENT_CANCEL": "[aria-label='back notes']",
+    "REBLOG": ".infinite-scroll-component [aria-label='reblog'",
+    "LIKE": ".infinite-scroll-component [aria-label='add to favorites']",
+    "LIKED": ".infinite-sctoll-component [data-testid='FavoriteIcon']",
+    "DELETE": ".infinite-scroll-component [data-testid='DeleteOutlineIcon']",
+    "DELETE_CONFIRM": ".MuiModal-root > .MuiBox-root > :nth-child(2)",
+    "EDIT": ".infinite-scroll-component [aria-label='Edit post']",
+    "OPTIONS": {
+      "_": ".infinite-scroll-component [aria-label='More']",
+      "COPY_LINK": ".MuiList-root > :nth-child(3)",
+      "UN_FOLLOW": ".MuiList-root > :nth-child(4)",
+      "BLOCK": ".MuiList-root > :nth-child(5)",
+      "CLOSE": ".MuiList-root > :nth-child(6)"
+    }
+  },
+
+  "FOLLOWERS_SERACH": "input[placeholder='Search your follower']",
+  "FOLLWERS_BLOGS": "ul",
+  "FOLLWERS_COUNT1": "[href='/blog/hsn/followers'] > .MuiButtonBase-root > .MuiGrid-grid-xs-1",
+  "FOLLWERS_COUNT2": ".search-div :first",
+
+  "FOLLOWERS": "[href*='/followers']",
+  "ACTIVITY": "[href*='/activity']",
+  "DRAFTS": "[href*='/drafts']"
+}

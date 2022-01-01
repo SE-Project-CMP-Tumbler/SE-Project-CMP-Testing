@@ -19,13 +19,14 @@
     "LIKE": ".infinite-scroll-component [aria-label='add to favorites']",
     "LIKED": ".infinite-sctoll-component [data-testid='FavoriteIcon']",
     "DELETE": ".infinite-scroll-component [data-testid='DeleteOutlineIcon']",
+    "DELETE_CONFIRM": ".MuiModal-root > .MuiBox-root > :nth-child(2)",
     "EDIT": ".infinite-scroll-component [aria-label='Edit post']",
     "OPTIONS": {
       "_": ".infinite-scroll-component [aria-label='More']",
-      "COPY_LINK": "ul[role='menu']:nth-child(2)",
-      "UN_FOLLOW": "ul[role='menu']:nth-child(3)",
-      "BLOCK": "ul[role='menu']:nth-child(4)",
-      "CLOSE": "ul[role='menu']:nth-child(5)"
+      "COPY_LINK": ".MuiList-root > :nth-child(3)",
+      "UN_FOLLOW": ".MuiList-root > :nth-child(4)",
+      "BLOCK": ".MuiList-root > :nth-child(5)",
+      "CLOSE": ".MuiList-root > :nth-child(6)"
     }
   },
 

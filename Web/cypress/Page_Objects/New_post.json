@@ -1,3 +1,19 @@
 {
+  "TEXT": ".FOqaP[aria-label='Text']",
+
+  "PHOTO": ".FOqaP[aria-label='Photo']",
+  "PHOTO_ADD": "div.imgdiv",
+  "PHOTO_ADD_WEB_TEXT": "textarea",
+  "PHOTO_ADD_WEB_SUBMIT": ".MuiBox-root > button",
+
+  "VIDEO": ".FOqaP[aria-label='Video']",
+  "VIDEO_ADD": "div.imgdiv",
+  "VIDEO_ADD_WEB_TEXT": "textarea",
+  "VIDEO_ADD_WEB_SUBMIT": ".MuiBox-root > button",
+
+
+  "TEXT_AREA": "div[role='textbox']",
+
+  "CANCEL": ".MuiGrid-container > :nth-child(3) > :nth-child(3)",
   "SUBMIT": ".MuiGrid-container > :nth-child(3) > :nth-child(2)"
 }

@@ -5,7 +5,7 @@ import * as SEL from '../../Page_Objects/'
 describe('Checkout and Radar Components', () => {
   describe('Radar component', () => {
     before(() => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(3000)
     })
@@ -33,14 +33,14 @@ describe('Checkout and Radar Components', () => {
       cy.get(SEL.DASHBOARD.RADAR.FOLLOW).click()
       cy.get(SEL.DASHBOARD.RADAR.BLOG).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(7000)
-      cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text').should('have.string', 'Un')
+      cy.wait(10000)
+      cy.get(SEL.PROFILE_SIDE.FOLLOW).invoke('text').should('have.string', 'Un')
     })
   })
 
   describe('Checkout component', () => {
     before(() => {
-      cy.login('hsn@hi2.in', atob('SHNuQGhpMi5pbg=='))
+      cy.login(0)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(3000)
     })
@@ -58,7 +58,7 @@ describe('Checkout and Radar Components', () => {
         cy.visit(href)
       })
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(11000)
+      cy.wait(10000)
       cy.get(SEL.BLOG_VIEW.FOLLOW).invoke('text').should('have.string', 'Un')
     })
   })

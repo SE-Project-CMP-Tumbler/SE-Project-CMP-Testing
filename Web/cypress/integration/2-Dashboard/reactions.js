@@ -1,23 +1,6 @@
 /// <reference types="cypress" />
 
 describe('Posts: user reactions, likes, shares, reblogs, notes  ', () => {
-  it('Tags ', () => {
-  /*
-  TODO:
-  * inspect tags
-  * try follow some
-  * check them in the user profile
-  * inspect some blogs related to this tag
-  */
-  })
-  it('Follow', () => {
-  /*
-  TODO:
-  * follow some suggested blogs, in the posts area
-  * follow certain tags
-  * check the user profile
-  */
-  })
   it('Block, unfollow', () => {
   /*
   TODO:

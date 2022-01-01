@@ -1,0 +1,45 @@
+{
+  "URL": {
+    "H": {
+      "_": "/profile/hsn",
+      "POSTS": "/profile/hsn",
+      "LIKES": "/profile/hsn/likes",
+      "ASK": "/profile/hsn/ask",
+      "SUBMIT": "/profile/hsn/submit",
+      "FOLLOWING": "/profile/hsn/following"
+    },
+    "K": {
+      "_": "/profile/karm",
+      "POSTS": "/profile/karm",
+      "LIKES": "/profile/karm/likes",
+      "ASK": "/profile/karm/ask",
+      "SUBMIT": "/profile/karm/submit",
+      "FOLLOWING": "/profile/karm/following"
+    }
+  },
+
+  "CHAT": ".nav > :nth-child(3)",
+  "OPTIONS": {
+    "_": ".nav > :nth-child(4)",
+    "FOLLOW": "[data-testid=FollowBtn]",
+    "BLOCK": "[data-testid=BlockBtn]"
+  },
+
+  "LIKES": ":nth-child(2) > .navv-link",
+  "LIKES_POSTS_BODY": "div.postBody",
+  "ASK": ":nth-child(3) > .navv-link",
+  "SUBMIT": ":nth-child(4) > .navv-link",
+
+  "POSTS": {
+    "BODY": ".profile-posts .postBody",
+    "TAGS": ".profile-posts [data-testid='tag-link']",
+    "NOTES": ".profile-posts .notediv span",
+    "SEND": ".profile-posts [aria-label='Send to message']",
+    "COMMENT": ".profile-posts [aria-label='add note']",
+    "REBLOG": ".profile-posts [aria-label='reblog'",
+    "LIKE": ".profile-posts [aria-label='add to favorites']",
+    "DELETE": ".profile-posts [data-testid='DeleteOutlineIcon']",
+    "EDIT": ".profile-posts [aria-label='Edit post']"
+  }
+
+}
