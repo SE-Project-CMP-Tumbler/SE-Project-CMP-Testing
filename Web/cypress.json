@@ -3,6 +3,7 @@
   "watchForFileChanges": false,
   "viewportWidth": 1366,
   "viewportHeight": 768,
+  "video": false,
   "projectId": "9p2h28",
   "reporter": "cypress-multi-reporters",
   "reporterOptions": {

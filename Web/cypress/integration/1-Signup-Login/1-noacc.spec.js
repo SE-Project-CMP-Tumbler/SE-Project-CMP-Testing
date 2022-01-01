@@ -1,11 +1,10 @@
 /// <reference types="cypress" />
 
-import * as SEL from '../../Page_Objects/'
+import { DASHBOARD, ROOT, LOGIN, SIGNUP } from '../../Page_Objects/'
 
 describe('No-account Tests', () => {
   context('Elements of root page', () => {
-    const ROOT = SEL.ROOT
-    beforeEach(() => {
+    before(() => {
       cy.visit('/')
     })
 
@@ -23,8 +22,7 @@ describe('No-account Tests', () => {
   })
 
   context('Elements of login page', () => {
-    const LOGIN = SEL.LOGIN
-    beforeEach(() => {
+    before(() => {
       cy.visit(LOGIN.URL)
     })
 
@@ -44,8 +42,7 @@ describe('No-account Tests', () => {
   })
 
   context('Elements of SIGNUP page', () => {
-    const SIGNUP = SEL.SIGNUP
-    beforeEach(() => {
+    before(() => {
       cy.visit(SIGNUP.URL)
     })
 
@@ -56,5 +53,10 @@ describe('No-account Tests', () => {
     it('assert login button exists', () => {
       cy.get(SIGNUP.LOGIN).should('exist')
     })
+  })
+
+  it('Should redirect away of dashboard', () => {
+    cy.visit(DASHBOARD.URL)
+    cy.get(DASHBOARD.SEARCH_BAR).should('not.exist')
   })
 })

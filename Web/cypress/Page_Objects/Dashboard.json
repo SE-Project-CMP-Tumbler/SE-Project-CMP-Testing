@@ -1,4 +1,75 @@
 {
   "URL": "/dashboard",
-  "NEW-VIEW_POSTS_DIV": ".MuiGrid-root.MuiGrid-container.MuiGrid-item.MuiGrid-spacing-xs-8.MuiGrid-direction-xs-column.MuiGrid-grid-xs-12.MuiGrid-grid-md-8.css-1jnhrwk-MuiGrid-root"
+
+  "SEARCH_BAR": ".search-bar",
+  "CHECK_OUT_TAGS": "a[data-testid='tag-link']",
+  "NEWS_FEED": ".infinite-scroll-component",
+  "POSTS": {
+    "BLOG": ".infinite-scroll-component a.blogname",
+    "FOLLOW": ".infinite-scroll-component .f",
+    "BODY": ".infinite-scroll-component .postBody",
+    "TAGS": ".infinite-scroll-component [data-testid='tag-link']",
+    "NOTES": ".infinite-scroll-component .notediv span",
+    "SEND": ".infinite-scroll-component [aria-label='Send to message']",
+    "COMMENT": ".infinite-scroll-component [aria-label='add note']",
+    "COMMENT_WRITE": "textarea[aria-invalid='false'][autocomplete='false'][id='standard-basic'][placeholder='Have something to say ?']",
+    "COMMENT_SEND": "Reply",
+    "COMMENT_CANCEL": "[aria-label='back notes']",
+    "REBLOG": ".infinite-scroll-component [aria-label='reblog'",
+    "LIKE": ".infinite-scroll-component [aria-label='add to favorites']",
+    "LIKED": ".infinite-sctoll-component [data-testid='FavoriteIcon']",
+    "DELETE": ".infinite-scroll-component [data-testid='DeleteOutlineIcon']",
+    "EDIT": ".infinite-scroll-component [aria-label='Edit post']",
+    "OPTIONS": {
+      "_": ".infinite-scroll-component [aria-label='More']",
+      "COPY_LINK": "ul[role='menu']:nth-child(2)",
+      "UN_FOLLOW": "ul[role='menu']:nth-child(3)",
+      "BLOCK": "ul[role='menu']:nth-child(4)",
+      "CLOSE": "ul[role='menu']:nth-child(5)"
+    }
+  },
+
+  "HOME": "a[href='/dashboard']",
+  "EXPLORE": "a[href='/explore/recommended-for-you']",
+  "INBOX": "a[href*='/inbox']",
+  "CHAT": {
+    "_": "div.drop.chat-drop"
+  },
+  "NOTIFICATIONS": {
+    "_": "[title='Notifications']"
+  },
+  "ACCOUNT": {
+    "_": "[title='My Tumblrs']",
+    "LOGOUT": "Log out"
+  },
+  "NEW_POST": "a[href*='/new']",
+
+  "CHECK_OUT_BLOGS": "li.check",
+  "CHECK_OUT1": {
+    "BLOG": "li.check:nth-child(1) a.blogname",
+    "FOLLOW": "li.check:nth-child(1) .f"
+  },
+  "CHECK_OUT2": {
+    "BLOG": "li.check:nth-child(2) a.blogname",
+    "FOLLOW": "li.check:nth-child(2) .f"
+  },
+  "CHECK_OUT3": {
+    "BLOG": "li.check:nth-child(3) a.blogname",
+    "FOLLOW": "li.check:nth-child(3) .f"
+  },
+  "CHECK_OUT4": {
+    "BLOG": "li.check:nth-child(4) a.blogname",
+    "FOLLOW": "li.check:nth-child(4) .f"
+  },
+
+  "RADAR": {
+    "BLOG": "div.side:nth-child(2) a.blogname",
+    "FOLLOW": "div.side:nth-child(2) .f",
+    "BODY": "div.side:nth-child(2) .postBody span",
+    "NOTES": "div.side:nth-child(2) .notediv span",
+    "SEND": "div.side:nth-child(2) [aria-label='Send to message']",
+    "COMMENT": "div.side:nth-child(2) [aria-label='add note']",
+    "REBLOG": "div.side:nth-child(2) [aria-label='reblog'",
+    "LIKE": "div.side:nth-child(2) [aria-label='add to favorites']"
+  }
 }

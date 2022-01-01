@@ -2,5 +2,5 @@
     "URL": "/",
     "SIGNUP": "a[href*='/register']",
     "LOGIN": "a[href*='/login']",
-    "WITHGOOGLE": "#google-login-button']"
+    "WITHGOOGLE": "#google-login-button"
 }

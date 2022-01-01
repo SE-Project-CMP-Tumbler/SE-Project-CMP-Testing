@@ -1,13 +1,6 @@
 /// <reference types="cypress" />
 
 describe('Posts: user reactions, likes, shares, reblogs, notes  ', () => {
-  it('Post exitence', () => {
-  /*
-  TODO
-  * Exists
-  * Non-empty
-  */
-  })
   it('Tags ', () => {
   /*
   TODO:

@@ -29,30 +29,30 @@ describe('pre-SignUp Tests', () => {
       cy.get(SIGNUP.SUBMIT).click()
     }
 
-    it('', () => {
+    beforeEach(() => {
       cy.visit(SIGNUP.URL)
-      // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
-      // testing all combinations except {valid, valid, valid}
-      const cnt = 3
-      for (let ei = 0; ei < cnt; ei++) {
-        for (let pi = 0; pi < cnt; pi++) {
-          for (let bi = 0; bi < cnt; bi++) {
-            if (ei + pi + bi < (cnt - 1) * 3) {
-              const states = ['empty', 'invalid', 'valid']
-              cy.log(`Trying ${states[ei]} email, ${states[pi]} password, ${states[bi]} blogname`)
-              cy.log(`email:${emails[ei]}, password: ${passwords[pi]}, blogname:${blogNames[bi]}`)
+    })
+
+    // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
+    // testing all combinations except {valid, valid, valid}
+    const cnt = 3
+    for (let ei = 0; ei < cnt; ei++) {
+      for (let pi = 0; pi < cnt; pi++) {
+        for (let bi = 0; bi < cnt; bi++) {
+          if (ei + pi + bi < (cnt - 1) * 3) {
+            it(`email: ' ${emails[ei]}', password: ' ${passwords[pi]}', blogname: ' ${blogNames[bi]}', should NOT signup`, () => {
               singUpInvalid(ei, pi, bi)
               // assert we didn't move to next page, "How old are you?"
               // eslint-disable-next-line cypress/no-unnecessary-waiting
               cy.wait(2000)
               cy.get(SIGNUP.AGE).should('not.exist')
-            }
+            })
           }
         }
       }
+    }
 
-      cy.log('Trying valid email, password and blogname but invalid age')
-      // testing valid combination but invalid age:
+    it('Valid email, password and blogname but invalid age should NOT singup', () => {
       cy.get(SIGNUP.EMAIL).clear().type(emails[2])
       cy.get(SIGNUP.PASSWORD).clear().type(passwords[2])
       cy.get(SIGNUP.BLOGNAME).clear().type(blogNames[2])

@@ -1,6 +1,7 @@
 {
   "URL": "/account/delete",
-  "EMAIL": "input[name='email']",
-  "PASSWORD": "input[name='password']",
-  "SUBMIT": "button[type=submit]"
+  "EMAIL": "#email'",
+  "PASSWORD": "#password",
+  "SUBMIT": "button[type=submit]",
+  "GONE": "gone"
 }
