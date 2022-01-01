@@ -2,13 +2,6 @@
 
 import * as SEL from '../../Page_Objects/'
 
-/*
-- inconsistency:
-
-* SOMETIMES it opens dashboard to non-logged in users
-* keeps asking to log in every single step, which is just just AAAAAAAAAAAAAAAAAAAAAAAAA
-*/
-
 describe('Actual SignUp Tests', () => {
   // These credintials will be used to create an account, then delete it
   // Blog name is randome because Tumblr has a bug where you can't create
@@ -21,61 +14,65 @@ describe('Actual SignUp Tests', () => {
   const emails = ['', 'invalid.com@', `${testEmail}`]
   const passwords = ['', 'weak', `${testPassword}`]
 
-  // This function is to bypass tubmlr ANNOYTINGLY asking to login every single step
-  function proceedLogin () {
-    if (cy.url().toString().indexOf(SEL.LOGIN.URL) !== -1) {
-      return
-    }
+  context('', () => {
+    beforeEach(() => {
+      cy.restoreLocalStorage()
+    })
 
-    cy.get(SEL.LOGIN.EMAIL).clear().type(testEmail)
-    cy.get(SEL.LOGIN.PASSWORD).clear().type(testPassword)
-    cy.get(SEL.LOGIN.SUBMIT).click()
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(4000)
-    if (cy.url().toString().indexOf('Privacy') !== -1) {
-      cy.contains('I Agree').click()
+    afterEach(() => {
+      cy.saveLocalStorage()
+    })
+
+    it('Valid SignUp', () => {
+      cy.visit(SEL.SIGNUP.URL)
+      cy.get(SEL.SIGNUP.EMAIL).type(testEmail)
+      cy.get(SEL.SIGNUP.PASSWORD).type(testPassword)
+      cy.get(SEL.SIGNUP.BLOGNAME).type(testBlogname)
+      cy.get(SEL.SIGNUP.SUBMIT).click()
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(4000)
-    }
-  }
+      cy.wait(7000) // Signing up takes a long time
+      cy.get(SEL.SIGNUP.AGE).type(testAge)
+      cy.get(SEL.SIGNUP.AGE_SUBMIT).click()
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(13000) // Signing up takes a long time
+    })
 
-  it('Valid SignUp', () => {
-    cy.visit(SEL.SIGNUP.URL)
-    cy.get(SEL.SIGNUP.EMAIL).type(testEmail)
-    cy.get(SEL.SIGNUP.PASSWORD).type(testPassword)
-    cy.get(SEL.SIGNUP.BLOGNAME).type(testBlogname)
-    cy.get(SEL.SIGNUP.SUBMIT).click()
+    it('Should be in Welcome Page', () => {
+      cy.url().should('have.string', SEL.WELCOME.URL)
+      // Skip and go to home page
+      cy.get(SEL.WELCOME.SKIP).click()
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(5000)
+    })
+
+    it('Test redirect from root to home', () => {
+    // cy.login(testEmail, testPassword)
     // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(10000) // Signing up takes a long time
-    cy.get(SEL.SIGNUP.AGE).type(testAge)
-    cy.get(SEL.SIGNUP.AGE_SUBMIT).click()
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(30000) // Signing up takes a long time
-  })
+    // cy.wait(2000)
 
-  it('Should be in Welcome Page', () => {
-    cy.url().should('have.string', SEL.WELCOME.URL)
-  })
+      cy.visit(SEL.ROOT.URL)
+      cy.url().should('have.string', SEL.DASHBOARD.URL)
+    })
 
-  it('Skip and go to home page', () => {
-    cy.get(SEL.WELCOME.SKIP).click()
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.wait(20000)
-  })
+    it('Test redirect from login to home', () => {
+      cy.visit(SEL.LOGIN.URL)
+      cy.url().should('have.string', SEL.DASHBOARD.URL)
+    })
 
-  it('Test redirect from login to home', () => {
-    cy.visit(SEL.LOGIN.URL)
-    cy.url().should('have.string', SEL.DASHBOARD.URL)
-  })
-
-  it('Test redirect from signup to home', () => {
-    cy.visit(SEL.SIGNUP.URL)
-    cy.url().should('have.string', SEL.DASHBOARD.URL)
+    it('Test redirect from signup to home', () => {
+      cy.visit(SEL.SIGNUP.URL)
+      cy.url().should('have.string', SEL.DASHBOARD.URL)
+    })
   })
 
   context('Logging Out', () => {
     it('Should successfully log out', () => {
-      cy.visit(SEL.LOGOUT.URL)
+      cy.restoreLocalStorage()
+
+      cy.visit(SEL.DASHBOARD.URL)
+      cy.get(SEL.DASHBOARD.ACCOUNT._).click()
+      cy.contains(SEL.DASHBOARD.ACCOUNT.LOGOUT).click()
+      cy.url().should('not.have', SEL.DASHBOARD.URL)
     })
 
     // it('Should be now in root page', () => {
@@ -123,44 +120,35 @@ describe('Actual SignUp Tests', () => {
       cy.get(SEL.LOGIN.SUBMIT).click()
     }
 
-    it('', () => {
+    beforeEach(() => {
       cy.visit(SEL.LOGIN.URL)
-      // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
-      // testing all combinations except {valid, valid, valid}
-      const cnt = 3
-      for (let ei = 0; ei < cnt; ei++) {
-        for (let pi = 0; pi < cnt; pi++) {
-          if (ei + pi < (cnt - 1) * 2) {
-            const states = ['empty', 'invalid', 'valid']
-            cy.log(`Trying ${states[ei]} email, ${states[pi]} password`)
-            cy.log(`email:${emails[ei]}, password: ${passwords[pi]}`)
+    })
+
+    // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
+    // testing all combinations except {valid, valid, valid}
+    const cnt = 3
+    for (let ei = 0; ei < cnt; ei++) {
+      for (let pi = 0; pi < cnt; pi++) {
+        if (ei + pi < (cnt - 1) * 2) {
+          const states = ['empty', 'invalid', 'valid']
+          it(`email: ' ${states[ei]}', password: ' ${states[pi]}' should NOT signup`, () => {
             logInInvalid(ei, pi)
             // assert we didn't move to next page, (give time for page to load just in case)
             // eslint-disable-next-line cypress/no-unnecessary-waiting
             cy.wait(4000)
             cy.url().should('have.string', SEL.LOGIN.URL)
-          }
+          })
         }
       }
-    })
+    }
   })
 
   context('Valid log in', () => {
-    it('', () => {
-      cy.get(SEL.LOGIN.EMAIL).clear().type(testEmail)
-      cy.get(SEL.LOGIN.PASSWORD).clear().type(testPassword)
-      cy.get(SEL.LOGIN.SUBMIT).click()
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(4000)
-      if (cy.url().toString().indexOf('Privacy') !== -1) {
-        cy.contains('I Agree').click()
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
-        cy.wait(4000)
-      }
-    })
-
-    it('Should be now in dashboard', () => {
+    it('Should log in', () => {
+      cy.login(testEmail, testPassword)
       cy.url().should('have.string', SEL.DASHBOARD.URL)
+
+      cy.saveLocalStorage()
     })
   })
 
@@ -180,52 +168,49 @@ describe('Actual SignUp Tests', () => {
       cy.get(SEL.DELETE_ACCOUNT.SUBMIT).click()
     }
 
-    it('Invalid delete', () => {
+    beforeEach(() => {
       cy.visit(SEL.DELETE_ACCOUNT.URL)
-      proceedLogin()
-      // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
-      // testing all combinations except {valid, valid, valid}
-      const cnt = 3
-      for (let ei = 0; ei < cnt; ei++) {
-        for (let pi = 0; pi < cnt; pi++) {
-          if (ei + pi < (cnt - 1) * 2) {
-            const states = ['empty', 'invalid', 'valid']
-            cy.log(`Trying ${states[ei]} email, ${states[pi]} password`)
-            cy.log(`email:${emails[ei]}, password: ${passwords[pi]}}`)
-            delInvalid(ei, pi)
+    })
 
+    // each field of {email, password, blog name} has three different states: {empty, invalid, valid}
+    // testing all combinations except {valid, valid, valid}
+    const cnt = 3
+    for (let ei = 0; ei < cnt; ei++) {
+      for (let pi = 0; pi < cnt; pi++) {
+        if (ei + pi < (cnt - 1) * 2) {
+          const states = ['empty', 'invalid', 'valid']
+          it(`email: ' ${states[ei]}', password: ' ${states[pi]}' should NOT delete`, () => {
+            cy.restoreLocalStorage()
+            delInvalid(ei, pi)
             // assert we didn't move to next page, (give time for page to load just in case)
             // eslint-disable-next-line cypress/no-unnecessary-waiting
             cy.wait(4000)
             cy.url().should('not.have.string', '/deleted')
-          }
+          })
         }
       }
-    })
+    }
 
     it('Valid Delete', () => {
+      cy.restoreLocalStorage()
+
       cy.visit(SEL.DELETE_ACCOUNT.URL)
-      proceedLogin()
       cy.get(SEL.DELETE_ACCOUNT.EMAIL).clear().type(testEmail)
       cy.get(SEL.DELETE_ACCOUNT.PASSWORD).clear().type(testPassword)
       cy.get(SEL.DELETE_ACCOUNT.SUBMIT).click()
 
       // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.wait(10000) // Delete takes time
+      cy.wait(7000) // Delete takes time
 
-      cy.url().should('have.string', '/deleted')
-      cy.get(SEL.ACCOUNT_DELETED.SIGNUP_AGAIN).should('exist')
+      cy.contains(SEL.DELETE_ACCOUNT.GONE).should('exist')
     })
 
     // Can't cuz it has captcha
-    it('forgot pass deleted', () => {
+    it('forgot pass deleted, cant cuz captcha', () => {
     })
 
     it('Log In Deleted Account', () => {
-      cy.visit(SEL.LOGIN.URL)
-      cy.get(SEL.LOGIN.EMAIL).type(testEmail)
-      cy.get(SEL.LOGIN.PASSWORD).type(testPassword)
-      cy.get(SEL.LOGIN.SUBMIT).click()
+      cy.login(testEmail, testPassword)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(4000)
       cy.url().should('have.string', SEL.LOGIN.URL)

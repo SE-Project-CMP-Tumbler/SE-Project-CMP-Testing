@@ -4,6 +4,7 @@ import * as SEL from '../../Page_Objects/'
 
 describe('Basic Dashboard Tests', () => {
   before(() => {
+    cy.login()
     cy.visit(SEL.DASHBOARD.URL)
   })
   it('Should contain multiple posts', () => {
