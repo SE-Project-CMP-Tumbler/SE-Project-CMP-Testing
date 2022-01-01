@@ -3,7 +3,23 @@
 
   "SEARCH_BAR": ".search-bar",
   "NEWS_FEED": ".infinite-scroll-component",
-  "POSTS": ".infinite-scroll-component > ",
+  "POSTS": {
+    "BLOG": ".infinite-scroll-component a.blogname",
+    "FOLLOW": ".infinite-scroll-component .f",
+    "BODY": ".infinite-scroll-component .postBody span",
+    "NOTES": ".infinite-scroll-component .notediv span",
+    "SEND": ".infinite-scroll-component [aria-label='Send to message']",
+    "COMMENT": ".infinite-scroll-component [aria-label='add note']",
+    "REBLOG": ".infinite-scroll-component [aria-label='reblog'",
+    "LIKE": ".infinite-scroll-component [aria-label='add to favorites']",
+    "OPTIONS": {
+      "_": ".infinite-scroll-component [aria-label='More']",
+      "COPY_LINK": "ul[role='menu']:nth-child(2)",
+      "UN_FOLLOW": "ul[role='menu']:nth-child(3)",
+      "BLOCK": "ul[role='menu']:nth-child(4)",
+      "CLOSE": "ul[role='menu']:nth-child(5)"
+    }
+  },
 
   "HOME": "a[href='/dashboard']",
   "EXPLORE": "a[href='/explore/recommended-for-you']",
@@ -40,6 +56,12 @@
 
   "RADAR": {
     "BLOG": "div.side:nth-child(2) a.blogname",
-    "FOOLOW": "div.side:nth-child(2) .f"
+    "FOOLOW": "div.side:nth-child(2) .f",
+    "BODY": "div.side:nth-child(2) .postBody span",
+    "NOTES": "div.side:nth-child(2) .notediv span",
+    "SEND": "div.side:nth-child(2) [aria-label='Send to message']",
+    "COMMENT": "div.side:nth-child(2) [aria-label='add note']",
+    "REBLOG": "div.side:nth-child(2) [aria-label='reblog'",
+    "LIKE": "div.side:nth-child(2) [aria-label='add to favorites']"
   }
 }

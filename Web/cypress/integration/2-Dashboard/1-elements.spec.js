@@ -34,7 +34,7 @@ describe('Elements of Dashboard Page', () => {
   })
 
   it('News feed', () => {
-    cy.get(SEL.DASHBOARD.POSTS).should('have.length.at.least', 1)
+    cy.get(SEL.DASHBOARD.POSTS.BODY).should('have.length.at.least', 1)
   })
 
   it('NavBar: new post', () => {
