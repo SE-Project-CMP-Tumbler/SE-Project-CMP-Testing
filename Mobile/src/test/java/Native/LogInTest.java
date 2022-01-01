@@ -4,16 +4,18 @@ import Base.Setup;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
+
 import java.util.List;
+
 import static Base.Utils.LogInCombineEmailData;
-import static Native.Utils.*;
+import static Native.Utils.DoesExist;
+import static Native.Utils.findElement;
 
 public class LogInTest extends Setup {
 
 
-    @Test(groups = {"Native"})
+    @Test(groups = {"Native", "Old"})
     public void LogIn() throws InterruptedException {
-
         findElement(StartPage.Skip_Btn.getId()).click();
         findElement(StartPage.LOGIN_Btn.getId()).click();
         findElement(LogInPage.LOG_IN_WITH_EMAIL.getId()).click();
@@ -28,9 +30,9 @@ public class LogInTest extends Setup {
             findElement(LogInPage.Done.getId()).click();
             Thread.sleep(3000);
             try {
-             Assert.assertTrue(DoesExist(LogInPage.Pass_field.getId()), "DashBoard should not be entered");
+                Assert.assertTrue(DoesExist(LogInPage.Pass_field.getId()), "DashBoard should not be entered");
             } catch (AssertionError e) {
-            Reporter.log("Test Failed with input "+ arr[0]+" "+arr[1]);
+                Reporter.log("Test Failed with input " + arr[0] + " " + arr[1]);
             }
         }
         findElement(LogInPage.Email_field.getId()).replaceValue(validRow[0]);
@@ -38,8 +40,8 @@ public class LogInTest extends Setup {
         findElement(LogInPage.Done.getId()).click();
         Thread.sleep(3000);
 
-        assert !DoesExist(LogInPage.In_The_SamePage.getId()) : "DashBoard should be reached, but it's not";
-        assert DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
+        Assert.assertFalse(DoesExist(LogInPage.In_The_SamePage.getId()), "DashBoard should be reached, but it's not");
+        Assert.assertTrue(DoesExist(DashBoardPage.CreatePostButton.getId()), "New posts should be addable");
     }
 
 

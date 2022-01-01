@@ -1,6 +1,7 @@
 package Native;
 
 import Base.Setup;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -11,9 +12,8 @@ import static Native.Utils.findElement;
 
 public class SignUpTest extends Setup {
 
-    @Test(groups = {"Native"})
+    @Test(groups = {"Native", "Old"})
     public void SignUp() throws InterruptedException {
-
         findElement(StartPage.Skip_Btn.getId()).click();
         findElement(StartPage.SIGN_UP_Btn.getId()).click();
         findElement(SignUpPage.SIGN_UP_WITH_EMAIL.getId()).click();
@@ -28,7 +28,7 @@ public class SignUpTest extends Setup {
             findElement(SignUpPage.Age_field.getId()).replaceValue(arr[3]);
             findElement(SignUpPage.Done.getId()).click();
             Thread.sleep(3000);
-            assert Utils.DoesExist(SignUpPage.In_The_SamePage.getId()) : "DashBoard should not be entered";
+            Assert.assertTrue(Utils.DoesExist(SignUpPage.In_The_SamePage.getId()), "DashBoard should not be entered");
         }
         findElement(SignUpPage.Email_field.getId()).replaceValue(validRow[0]);
         findElement(SignUpPage.Pass_field.getId()).replaceValue(validRow[1]);
@@ -36,7 +36,9 @@ public class SignUpTest extends Setup {
         findElement(SignUpPage.Age_field.getId()).replaceValue(validRow[3]);
         findElement(SignUpPage.Done.getId()).click();
         Thread.sleep(3000);
-        assert !Utils.DoesExist(SignUpPage.In_The_SamePage.getId()) : "DashBoard Should be reached";
-        assert Utils.DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
+        Assert.assertFalse(Utils.DoesExist(SignUpPage.In_The_SamePage.getId()), "DashBoard Should be reached");
+        Assert.assertTrue(Utils.DoesExist(DashBoardPage.CreatePostButton.getId()), "New posts should be addable");
+        driver.navigate().back();
+        driver.navigate().back();
     }
 }

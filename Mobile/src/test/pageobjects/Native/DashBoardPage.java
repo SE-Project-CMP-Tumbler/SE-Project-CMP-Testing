@@ -5,6 +5,7 @@ import Base.Selector.Identifier;
 
 public enum DashBoardPage {
     CreatePostButton(Identifier.findByRescId, "createPostButton"),
+    PostObject(Identifier.findByRescId,"post"),
     HomeButton(Identifier.findByContDesc, "Home"),
     SearchButton(Identifier.findByRescId, "Search"),
     MessagesButton(Identifier.findByContDesc, "Activity"),

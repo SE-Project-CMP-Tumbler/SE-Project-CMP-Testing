@@ -7,7 +7,7 @@ public enum SignUpPage {
 
     SIGN_UP_WITH_EMAIL(Identifier.findByText, "SIGN UP WITH EMAIL"),
     SIGN_UP_WITH_Google(Identifier.findByText, "SIGN UP IN WITH GOOGLE"),
-    In_The_SamePage(Identifier.findByRescId, "What should we call you?"),
+    In_The_SamePage(Identifier.findByText, "What should we call you?"),
     Done(Identifier.findByRescId, "sign_up_done_txt"),
     Email_field(Identifier.findByRescId, "signup_txt_email"),
     Pass_field(Identifier.findByRescId, "signup_txt_password"),
