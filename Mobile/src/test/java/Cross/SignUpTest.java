@@ -1,11 +1,12 @@
 package Cross;
 
 import Base.Setup;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static Base.Utils.*;
+import static Base.Utils.SignUpCombineEmailData;
 import static Cross.Utils.*;
 
 public class SignUpTest extends Setup {
@@ -55,9 +56,8 @@ public class SignUpTest extends Setup {
         findElementByText(SignUpPage.Name_field.getId()).replaceValue(validRow[2]);
         findElementByContentDesc(SignUpPage.Done_Cross.getId()).click();
         Thread.sleep(3000);
-        assert !DoesExist(SignUpPage.Pass_field.getId()) : "DashBoard Should be reached";
-        assert DoesExist(DashBoardPage.CreatePostButton.getId()) : "New posts should be addable";
-
+        Assert.assertFalse(DoesExist(SignUpPage.Pass_field.getId()), "DashBoard Should be reached");
+        Assert.assertTrue(DoesExist(DashBoardPage.CreatePostButton.getId()), "New posts should be addable");
     }
 
     public void validSignUp() {

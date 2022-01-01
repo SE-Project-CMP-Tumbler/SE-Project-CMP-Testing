@@ -16,7 +16,8 @@ public class LogInTest extends Setup {
 
     @Test(groups = {"Native", "Old"})
     public void LogIn() throws InterruptedException {
-        findElement(StartPage.Skip_Btn.getId()).click();
+
+        //findElement(StartPage.Skip_Btn.getId()).click();
         findElement(StartPage.LOGIN_Btn.getId()).click();
         findElement(LogInPage.LOG_IN_WITH_EMAIL.getId()).click();
 
