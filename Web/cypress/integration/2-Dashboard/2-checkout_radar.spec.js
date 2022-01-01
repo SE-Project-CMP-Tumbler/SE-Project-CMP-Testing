@@ -47,7 +47,7 @@ describe('Checkout and Radar Components', () => {
 
     it('Scenario of following first checkout user', () => {
       // https://github.com/cypress-io/cypress-example-recipes/blob/master/examples/testing-dom__tab-handling-links/cypress/integration/tab_handling_anchor_links_spec.js
-      cy.get(SEL.DASHBOARD.CHECK_OUT1.BLOG).then(function ($a) {
+      cy.get(SEL.DASHBOARD.CHECK_OUT1.BLOG).then(($a) => {
         // extract the fully qualified href property
         const href = $a.prop('href')
 

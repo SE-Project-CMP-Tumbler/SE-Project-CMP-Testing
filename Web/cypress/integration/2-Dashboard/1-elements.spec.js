@@ -62,4 +62,14 @@ describe('Elements of Dashboard Page', () => {
       cy.wrap($el).should('not.have.html', '<span></span>')
     })
   })
+
+  it('Check out These Tags', () => {
+    for (let i = 0; i < 4; i++) {
+      cy.scrollTo('bottom')
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(7000)
+    }
+
+    cy.get(SEL.DASHBOARD.CHECK_OUT_TAGS).should('have.length.at.least', 1)
+  })
 })
