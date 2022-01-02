@@ -9,5 +9,6 @@ Web/cypress/reports/
 Web/cypress/screenshots/
 Web/coverage/
 Web/.nyc_output/
+Web/stress/__pycache__/
 Mobile/allure-report/*
 Mobile/allure-results/*
