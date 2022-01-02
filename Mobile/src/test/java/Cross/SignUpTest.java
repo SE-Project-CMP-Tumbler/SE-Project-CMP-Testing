@@ -57,7 +57,7 @@ public class SignUpTest extends Setup {
         findElementByContentDesc(SignUpPage.Done_Cross.getId()).click();
         Thread.sleep(3000);
         Assert.assertFalse(DoesExist(SignUpPage.Pass_field.getId()), "DashBoard Should be reached");
-        Assert.assertTrue(DoesExist(DashBoardPage.CreatePostButton.getId()), "New posts should be addable");
+        Assert.assertTrue(DoesExist(DashBoardPage.CreatePostButton.getId().id), "New posts should be addable");
     }
 
     public void validSignUp() {

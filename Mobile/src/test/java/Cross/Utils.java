@@ -1,5 +1,6 @@
 package Cross;
 
+import Base.Selector;
 import Base.Setup;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
@@ -48,6 +49,31 @@ public class Utils extends Setup {
                 } catch (Exception eee) {
                     return false;
                 }
+        }
+    }
+    public static boolean DoesExist_SEL(Selector S) {
+        try {
+            findElement(S);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static AndroidElement findElement(Base.Selector S) {
+        switch (S.func) {
+            case findByText -> {
+                return findElementByText(S.id);
+            }
+            case findByContDesc -> {
+                return findElementByContentDesc(S.id);
+            }
+            case findByRescId -> {
+                return findElementByRescId(S.id);
+            }
+            default -> {
+                return null;
+            }
         }
     }
     public static AndroidElement findElementByClassNameIndex(String classNameIndex) {
