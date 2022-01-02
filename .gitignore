@@ -7,5 +7,7 @@ Mobile/.idea
 Web/cypress/videos/
 Web/cypress/reports/
 Web/cypress/screenshots/
+Web/coverage/
+Web/.nyc_output/
 Mobile/allure-report/*
 Mobile/allure-results/*
